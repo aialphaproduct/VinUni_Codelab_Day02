@@ -6,6 +6,15 @@
 **Ngày cập nhật:** 07/11/2026  
 **Phạm vi đóng góp:** Báo cáo cá nhân; bài toán được chọn từ Card 1 / Scan #1 trong [Problem Scan](01-problem-scan.md).
 
+---
+
+> ### 📌 Quyết định chọn đề tài đại diện nhóm
+> Theo quy trình nộp bài của Lab (README mục 3): mỗi thành viên nhóm **Simple-Tech** tự hoàn thiện báo cáo cá nhân trên branch riêng (`luuthanhmy`, `vietduc`, `nguyencongtinh`, `khongtienduong`, `PhamQuangTruong`, `VuTriDung`). Sau khi rà soát cả 6 bài, nhóm thống nhất chọn **bài toán này của Lưu Văn Việt Đức** làm nội dung `.md` đại diện merge vào `main`, vì đây là bài duy nhất có **bộ dữ liệu test tự tạo kèm đáp án chuẩn** (`vinfast_intake/`) và **đo lường Precision/Recall thực tế** qua các lượt stress-test (`results/vinfast_intake/`), thay vì chỉ dừng ở mức ý tưởng.
+>
+> Các thành viên khác vẫn giữ nguyên báo cáo cá nhân và code `.py` trên branch riêng của mình để chấm điểm cá nhân — không bị ảnh hưởng bởi lựa chọn này.
+
+---
+
 > **Trạng thái:** Đã triển khai prompt prototype và có một số phản hồi thực tế trên dữ liệu giả lập. Chưa xác minh pain point, workflow nội bộ, baseline hay mức tiết kiệm thời gian tại VinFast. Kết quả kỳ vọng được tách khỏi kết quả quan sát.
 
 ## 1. Phạm vi và căn cứ
