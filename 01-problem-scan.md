@@ -1,10 +1,19 @@
 # Lab 02 — Problem Scan & Quick Assessment
 
-**Người thực hiện:** Lưu Văn Việt Đức  
-**Tên nhóm:** Simple - Tech  
-**Email:** luuvanvietduc@gmail.com  
-**Ngày cập nhật:** 07/11/2026  
-**Phạm vi đóng góp:** Bài làm cá nhân của Lưu Văn Việt Đức; chưa thay thế báo cáo tổng hợp của nhóm.
+**Tên nhóm:** Simple-Tech
+**Thành viên nhóm:**
+| # | Họ và tên | Email |
+|---|-----------|-------|
+| 1 | Lưu Thanh Mỹ (Trưởng nhóm) | data97688@gmail.com |
+| 2 | Lưu Văn Việt Đức | luuvanvietduc@gmail.com |
+| 3 | Nguyễn Công Tĩnh | tinh22102004@gmail.com |
+| 4 | Vũ Trí Dũng | dungvutri25@gmail.com |
+| 5 | Phạm Quang Trường | truongpham090325@gmail.com |
+| 6 | Dương | khongtienduongcv@gmail.com |
+
+**Người thực hiện nội dung gốc:** Lưu Văn Việt Đức
+**Ngày cập nhật:** 07/11/2026
+**Phạm vi đóng góp:** Báo cáo tổng hợp đại diện cho **nhóm Simple-Tech**, được cả nhóm thống nhất chọn sau khi rà soát 6 bài cá nhân (xem mục "Quyết định chọn đề tài đại diện nhóm" trong [02-deep-dive-report.md](02-deep-dive-report.md)). Nội dung gốc do Lưu Văn Việt Đức thực hiện, được nhóm xác nhận và merge vào `main` làm căn cứ chấm điểm báo cáo chung.
 
 ## 1. Phạm vi khảo sát
 

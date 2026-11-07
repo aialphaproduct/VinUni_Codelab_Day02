@@ -1,10 +1,19 @@
 # VinFast — Chuẩn hóa mô tả nhu cầu sửa chữa thành phiếu tiếp nhận dịch vụ
 
-**Người thực hiện:** Lưu Văn Việt Đức  
-**Tên nhóm:** Simple - Tech  
-**Email:** luuvanvietduc@gmail.com  
-**Ngày cập nhật:** 07/11/2026  
-**Phạm vi đóng góp:** Báo cáo cá nhân; bài toán được chọn từ Card 1 / Scan #1 trong [Problem Scan](01-problem-scan.md).
+**Tên nhóm:** Simple-Tech
+**Thành viên nhóm:**
+| # | Họ và tên | Email |
+|---|-----------|-------|
+| 1 | Lưu Thanh Mỹ (Trưởng nhóm) | data97688@gmail.com |
+| 2 | Lưu Văn Việt Đức | luuvanvietduc@gmail.com |
+| 3 | Nguyễn Công Tĩnh | tinh22102004@gmail.com |
+| 4 | Vũ Trí Dũng | dungvutri25@gmail.com |
+| 5 | Phạm Quang Trường | truongpham090325@gmail.com |
+| 6 | Dương | khongtienduongcv@gmail.com |
+
+**Người thực hiện nội dung gốc:** Lưu Văn Việt Đức
+**Ngày cập nhật:** 07/11/2026
+**Phạm vi đóng góp:** Báo cáo tổng hợp đại diện cho **nhóm Simple-Tech** — bài toán được chọn từ Card 1 / Scan #1 trong [Problem Scan](01-problem-scan.md), đã được cả nhóm thống nhất chọn làm nội dung `.md` chấm điểm chung (xem lý do bên dưới).
 
 ---
 

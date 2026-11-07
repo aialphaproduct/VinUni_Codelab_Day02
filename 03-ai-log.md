@@ -1,11 +1,20 @@
 # Lab 02 — AI Log & Personal Reflection
 
-**Người thực hiện:** Lưu Văn Việt Đức  
-**Tên nhóm:** Simple - Tech  
-**Email:** luuvanvietduc@gmail.com  
-**Ngày tổng hợp:** 07/11/2026  
+**Tên nhóm:** Simple-Tech
+**Thành viên nhóm:**
+| # | Họ và tên | Email |
+|---|-----------|-------|
+| 1 | Lưu Thanh Mỹ (Trưởng nhóm) | data97688@gmail.com |
+| 2 | Lưu Văn Việt Đức | luuvanvietduc@gmail.com |
+| 3 | Nguyễn Công Tĩnh | tinh22102004@gmail.com |
+| 4 | Vũ Trí Dũng | dungvutri25@gmail.com |
+| 5 | Phạm Quang Trường | truongpham090325@gmail.com |
+| 6 | Dương | khongtienduongcv@gmail.com |
+
+**Người viết nội dung gốc:** Lưu Văn Việt Đức
+**Ngày tổng hợp:** 07/11/2026
 **Đề tài:** VinFast — Chuẩn hóa mô tả nhu cầu sửa chữa thành phiếu tiếp nhận dịch vụ.  
-**Phạm vi đóng góp:** Nhật ký và phản tư cá nhân; chỉ ghi các hoạt động đã thực hiện trong quá trình làm bài.
+**Phạm vi đóng góp:** Nhật ký AI-log này được nhóm **Simple-Tech** chọn làm bản đại diện trên `main`, vì gắn liền với đề tài VinFast đã được chọn. Nội dung phản ánh trải nghiệm cá nhân thật của Lưu Văn Việt Đức trong quá trình làm bài (không chỉnh sửa lại để "đại diện cảm nhận" của cả nhóm); các thành viên khác vẫn có AI-log riêng của mình trên branch cá nhân, nộp cùng phần code để chấm điểm cá nhân (tiêu chí I3).
 
 ## 1. Tôi sử dụng AI để làm gì?
 
