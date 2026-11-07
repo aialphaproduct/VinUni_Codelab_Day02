@@ -106,7 +106,119 @@ Chọn **top 3 bài toán** từ danh sách trên và hoàn thiện **3 Quick Pr
 > Hãy dán nội dung thẻ bài toán của bạn vào LLM để nhận phản biện:
 > _"Đây là một thẻ bài toán vận hành tôi đề xuất cho Vin Smart Future: [Dán nội dung]. Hãy đóng vai trò là một CFO và Trưởng phòng Vận hành cực kỳ khắt khe, chỉ ra cho tôi 3 điểm yếu về logic, metric, và giải thích vì sao rule-based code thông thường có thể giải quyết bài toán này tốt hơn là dùng AI."_
 
----
+Trong 5 bài toán mình vừa nêu trên thì mình sẽ chọn 3 bài toán mà cảm thấy là khó khăn và khó giải quyết nhất. Đó là 3 bài:
+
+- Problem #2: Kiểm tra và đối chiếu hồ sơ bảo hiểm.
+- Problem #4: Đối soát viện phí, mã dịch vụ và hóa đơn.
+- Problem #5: Soạn thảo và hoàn thiện hồ sơ khám chữa bệnh.
+
+1. Problem #2: Kiểm tra và đối chiếu hồ sơ bảo hiểm.
+<!-- prettier-ignore-start -->
+
+```
+┌──────────────────────────────────────────────────────────────────────┐
+│ QUICK PROBLEM CARD #1                                                │
+│                                                                      │
+│ Bài toán (1 câu):                                                    │
+│ Tự động kiểm tra quyền lợi bảo hiểm và phát hiện hồ sơ thiếu giấy tờ │
+│ trước khi gửi yêu cầu thanh toán.                                    │
+│                                                                      │
+│ Công ty thành viên: [ ] VinFast  [ ] Xanh SM  [ ] Vinhomes           │
+│                     [x] Vinmec   [ ] Khác: __________                │
+│                                                                      │
+│ Ai đang đau (Actor)?                                                 │
+│ Nhân viên bảo hiểm, nhân viên tiếp nhận và thanh toán viện phí.      │
+│                                                                      │
+│ Workflow thủ công hiện tại (3-5 bước):                               │
+│ 1. Tiếp nhận yêu cầu --> 2. Kiểm tra quyền lợi bảo hiểm              │
+│ --> 3. Đối chiếu dịch vụ --> 4. Kiểm tra giấy tờ --> 5. Gửi duyệt    │
+│                                                                      │
+│ Bước nào tốn thời gian/lỗi nhất?                                     │
+│ Bước 2-4: Đối chiếu điều khoản, dịch vụ và giấy tờ. (15-20 phút/lượt)│
+│ AI có thể nhảy vào hỗ trợ ở bước nào?                                │
+│ OCR trích xuất, LLM đọc điều khoản và cảnh báo hồ sơ thiếu.          │
+│                                                                      │
+│ Đo thành công bằng gì (Metric có số)?                                │
+│ Giảm thời gian kiểm tra từ 15 phút xuống dưới 5 phút/hồ sơ.          │
+│ Độ chính xác trích xuất thông tin đạt ít nhất 95%.                   │
+│                                                                      │
+│ Quick Architecture: [ ] No AI  [ ] Rule  [x] LLM  [ ] Agent          │
+└──────────────────────────────────────────────────────────────────────┘
+```
+
+<!-- prettier-ignore-end -->
+
+2. Problem #4: Đối soát viện phí, mã dịch vụ và hóa đơn.
+
+<!-- prettier-ignore-start -->
+```
+┌──────────────────────────────────────────────────────────────────────┐
+│ QUICK PROBLEM CARD #2                                                │
+│                                                                      │
+│ Bài toán (1 câu):                                                    │
+│ Tự động phát hiện sai lệch giữa chỉ định điều trị, dịch vụ thực tế,  │
+│ mã dịch vụ và hóa đơn viện phí.                                      │
+│                                                                      │
+│ Công ty thành viên: [ ] VinFast  [ ] Xanh SM  [ ] Vinhomes           │
+│                     [x] Vinmec   [ ] Khác: __________                │
+│                                                                      │
+│ Ai đang đau (Actor)?                                                 │
+│ Nhân viên kế toán viện phí, bộ phận bảo hiểm và tài chính.           │
+│                                                                      │
+│ Workflow thủ công hiện tại (3-5 bước):                               │
+│ 1. Thu thập dịch vụ --> 2. Đối chiếu chỉ định bác sĩ                 │
+│ --> 3. Kiểm tra mã và giá --> 4. Đối chiếu hóa đơn                   │
+│ --> 5. Phát hiện và xử lý sai lệch.                                  │
+│                                                                      │
+│ Bước nào tốn thời gian/lỗi nhất?                                     │
+│ Bước 2-4: Đối chiếu dữ liệu từ nhiều hệ thống. (8-12 phút/lượt)      │
+│ AI có thể nhảy vào hỗ trợ ở bước nào?                                │
+│ Đối chiếu hóa đơn, phát hiện mã dịch vụ và đơn giá bất thường.       │
+│                                                                      │
+│ Đo thành công bằng gì (Metric có số)?                                │
+│ Giảm thời gian đối soát từ 10 phút xuống dưới 3 phút/hồ sơ.          │
+│ Độ chính xác đối chiếu đạt ít nhất 98%.                              │
+│                                                                      │
+│ Quick Architecture: [ ] No AI  [x] Rule  [ ] LLM  [ ] Agent          │
+└──────────────────────────────────────────────────────────────────────┘
+```
+<!-- prettier-ignore-end -->
+
+3. Problem #5: Soạn thảo và hoàn thiện hồ sơ khám chữa bệnh.
+<!-- prettier-ignore-start -->
+
+```
+┌──────────────────────────────────────────────────────────────────────┐
+│ QUICK PROBLEM CARD #3                                                │
+│                                                                      │
+│ Bài toán (1 câu):                                                    │
+│ Hỗ trợ bác sĩ chuyển nội dung trao đổi và thông tin khám bệnh thành  │
+│ bản ghi chú bệnh án có cấu trúc nhằm giảm thời gian nhập liệu.       │
+│                                                                      │
+│ Công ty thành viên: [ ] VinFast  [ ] Xanh SM  [ ] Vinhomes           │
+│                     [x] Vinmec   [ ] Khác: __________                │
+│                                                                      │
+│ Ai đang đau (Actor)?                                                 │
+│ Bác sĩ khám chữa bệnh, điều dưỡng và nhân viên quản lý hồ sơ.        │
+│                                                                      │
+│ Workflow thủ công hiện tại (3-5 bước):                               │
+│ 1. Tiếp nhận bệnh nhân --> 2. Ghi nhận triệu chứng và tiền sử        │
+│ --> 3. Nhập dữ liệu --> 4. Soạn ghi chú --> 5. Kiểm tra hồ sơ        │
+│                                                                      │
+│ Bước nào tốn thời gian/lỗi nhất?                                     │
+│ Bước 3-4: Nhập liệu và tổng hợp thông tin. (5-10 phút/lượt khám)     │
+│ AI có thể nhảy vào hỗ trợ ở bước nào?                                │
+│ Chuyển giọng nói thành văn bản, tóm tắt và điền mẫu bệnh án.         │
+│                                                                      │
+│ Đo thành công bằng gì (Metric có số)?                                │
+│ Giảm 50% thời gian hoàn thiện ghi chú bệnh án.                       │
+│ 100% ghi chú AI tạo ra phải được bác sĩ xác nhận.                    │
+│                                                                      │
+│ Quick Architecture: [ ] No AI  [ ] Rule  [x] LLM  [ ] Agent          │
+└──────────────────────────────────────────────────────────────────────┘
+```
+
+## <!-- prettier-ignore-end -->
 
 # 🏗️ Phase 3 — DEEP-DIVE (Nhóm, 85 min)
 
