@@ -306,6 +306,20 @@ Các ngưỡng là mục tiêu đánh giá ban đầu, cần điều chỉnh the
 
 Không cần cung cấp API key, thông tin nhận dạng khách hàng hoặc hồ sơ nội bộ để hoàn thiện báo cáo lab. Chỉ bổ sung dữ liệu nghiệp vụ khi được phép sử dụng và đã xử lý thông tin nhận dạng phù hợp.
 
+## 7.1. Lưu ý khi thuyết trình / Q&A dự kiến
+
+Nhóm chủ động nêu các điểm sau khi trình bày, thay vì để giám khảo tự phát hiện — biến giới hạn thành bằng chứng cho thấy nhóm hiểu rõ phạm vi của chính mình:
+
+| Câu hỏi giám khảo có thể hỏi | Câu trả lời trung thực (đã có trong báo cáo) |
+|---|---|
+| "Precision/Recall thực tế là bao nhiêu?" | Chưa tính được trên toàn bộ 20 ca — chỉ **4/20 ca (20%)** được rà soát thủ công thành công (VF-01, 02, 03, 18), do dịch vụ Gemini API trả lỗi 503/504 lặp lại ở phần lớn các lượt chạy còn lại (mục 5.6–5.7). Đây là giới hạn về thời gian/hạ tầng trong khuôn khổ lab, không phải lỗi thiết kế. |
+| "Ranh giới có chống được prompt injection không?" | Có bằng chứng cho **1/3 ca adversarial** (VF-18 — model không bịa thêm triệu chứng). Hai ca VF-19, VF-20 chưa có phản hồi thành công để đánh giá (mục 5.4), do cùng nguyên nhân lỗi dịch vụ API nêu trên. |
+| "Thời gian xử lý trung bình hiện tại là bao nhiêu phút/lượt?" | Chưa đo — sơ đồ Current-State ở [04-workflow-diagram.pdf](04-workflow-diagram.pdf) ghi rõ từng bước là "chưa đo" thay vì bịa số liệu minh họa, vì nhóm chưa phỏng vấn được cố vấn dịch vụ VinFast thực tế (mục 2.2, mục 7). |
+| "Sao đổi từ model `gemini-2.5-flash` sang `gemini-3.8-flash`?" | Model gốc trả lỗi 404 với tài khoản thử nghiệm của nhóm trong quá trình chạy thật; đã ghi rõ lý do và bằng chứng trong [03-ai-log.md](03-ai-log.md) và mục 5.1. |
+| "Vì sao bài này kết luận NOT YET trong khi bài kia (Xanh SM) kết luận GO?" | Hai bài toán khác nhau về mức độ bằng chứng: bài Xanh SM dùng worked example có sẵn từ giảng viên làm tham chiếu, còn bài VinFast dùng dữ liệu nhóm tự tạo và thử nghiệm thật — nên áp dụng tiêu chuẩn đánh giá nghiêm ngặt hơn, chưa đủ cơ sở để chọn GO. Đây là sự nhất quán về phương pháp (quyết định dựa trên chứng cứ thực có), không phải mâu thuẫn. |
+
+**Thông điệp chốt:** Giới hạn lớn nhất của bài này không phải do sai hướng tiếp cận, mà do **hạ tầng API không ổn định trong thời gian làm lab** khiến nhóm không chạy đủ bộ test. Đây chính là lý do quyết định "NOT YET" được đưa ra một cách trung thực thay vì "GO" chỉ dựa trên vài kết quả thuận lợi ban đầu.
+
 ## 8. Tài liệu tham khảo và bằng chứng
 
 Nguồn công khai được đối chiếu ngày **07/11/2026**. Chỉ dùng các nội dung được nguồn hỗ trợ; workflow nội bộ và tác động kinh doanh vẫn là giả thuyết.
