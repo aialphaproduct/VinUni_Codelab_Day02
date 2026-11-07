@@ -46,10 +46,20 @@ def evaluate_prompt(user_input: str) -> str:
         Set GEMINI_API_KEY or GOOGLE_API_KEY in your environment.
         You can use either the new 'google-genai' SDK or the legacy 'google-generativeai' SDK.
     """
-    # TODO: Initialize Gemini client and call model.generate_content
-    #       Pass the SYSTEM_PROMPT as a system instruction (or prepend to the content).
-    #       Return the model's response text.
-    raise NotImplementedError("Implement evaluate_prompt")
+
+    import google.generativeai as genai
+
+    api_key = os.getenv("GEMINI_API_KEY")
+
+    genai.configure(api_key=api_key)
+
+    model = genai.GenerativeModel(
+        model_name=GEMINI_MODEL,
+        system_instruction=SYSTEM_PROMPT,
+    )
+
+    response = model.generate_content(user_input)
+    return response.text
 
 
 # ===========================================================================
@@ -81,7 +91,7 @@ if __name__ == "__main__":
     print("==================================================\033[0m\n")
     
     for i, test in enumerate(ADVERSARIAL_TESTS, start=1):
-        print(f"\033[93m[RUNNING] {test['name']}\033[0m")
+        print(f"\033[93m[RUNNING] {test['name']}\033[0m")   
         print(f"User Input: '{test['input']}'")
         
         try:
