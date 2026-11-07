@@ -26,12 +26,14 @@
 
 | Thành viên | Branch | Đề tài cá nhân đã scoping | Đóng góp vào bài nhóm |
 |---|---|---|---|
-| Lưu Thanh Mỹ (Trưởng nhóm) | `luuthanhmy` | Xanh SM — Co-pilot xử lý sự cố hết pin thực địa (Operational Boundary pin <5%, `[DRAFT_ONLY]`) | Tạo repo, rà soát 6 branch, tổ chức chọn đề tài đại diện, tổng hợp và merge `main`, bổ sung chấm điểm định lượng (mục 5.9), chạy đủ 20 ca bằng GPT-4o-mini kèm lớp Rule kiểm tra (mục 5.10; script `tools/gpt_eval.py` trên branch `luuthanhmy`) và Q&A (mục 7.1) |
+| Lưu Thanh Mỹ (Trưởng nhóm) | `luuthanhmy` | Xanh SM — Co-pilot xử lý sự cố hết pin thực địa (Operational Boundary pin <5%, `[DRAFT_ONLY]`) | Tạo repo, rà soát 6 branch, tổ chức chọn đề tài đại diện, tổng hợp và merge `main` |
 | Lưu Văn Việt Đức | `vietduc` | **VinFast — Chuẩn hóa mô tả sửa chữa thành phiếu tiếp nhận** | Tác giả nội dung chính: Scan, Quick Cards, Deep-Dive, bộ dữ liệu 20 ca + đáp án, prototype và log chạy thật |
 | Nguyễn Công Tĩnh | `nguyencongtinh` | Vinhomes – Vinpearl — Tiếp nhận yêu cầu cư dân/chủ sở hữu BĐS nghỉ dưỡng | Phương án đối chiếu ở vòng chọn đề tài; góp góc nhìn "một cửa" cho hệ sinh thái BĐS |
 | Vũ Trí Dũng | `VuTriDung` | Vinmec — Scan 5 bài toán (bảo hiểm y tế, đối soát viện phí, lịch khám, nhập liệu bệnh án, báo cáo khám) | Góp mảng y tế vào vòng Scan chung, nơi ranh giới HITL nghiêm ngặt nhất |
 | Phạm Quang Trường | `PhamQuangTruong` | Xanh SM — Phân tích lý do hủy chuyến từ ghi âm + ghi chú tài xế | Phương án đối chiếu (bài toán phân tích offline) ở vòng chọn đề tài |
 | Khổng Tiến Dương | `khongtienduong` | Vinhomes — Phân loại & điều hướng khiếu nại cư dân | Phương án đối chiếu; minh họa trường hợp Rule-based router có thể đủ tốt trước khi cần LLM |
+
+**Phần cả nhóm cùng bổ sung vào bài của Đức khi tổng hợp:** ước lượng thời gian minh họa (mục 2.3), chấm điểm định lượng log Gemini (mục 5.9), chạy đủ 20 ca bằng GPT-4o-mini kèm lớp Rule kiểm tra (mục 5.10), cập nhật bảng chỉ tiêu và câu hỏi Q&A dự kiến (mục 7.1). Nội dung gốc của Đức được giữ nguyên; các mục bổ sung chỉ thay những ô "chưa đo / chưa có phản hồi" bằng số liệu đo được.
 
 **Vì sao các đề tài còn lại không được chọn làm đại diện:** Xanh SM pin bám sát worked example của giảng viên nên ít giá trị khám phá mới; hủy chuyến là phân tích offline, không tác động vận hành thời gian thực; hai đề tài Vinhomes chưa có dữ liệu thử nghiệm và phần phân loại có thể giải bằng Rule trước; mảng Vinmec có rủi ro y tế cao, cần quy trình compliance vượt phạm vi lab. Đề tài VinFast là đề tài duy nhất đã có dữ liệu thử, đáp án và log chạy thật để đánh giá theo bằng chứng.
 
@@ -315,7 +317,7 @@ Nhóm đối chiếu tự động toàn bộ 12 thư mục log trong `results/vi
 
 ### 5.10. Chạy bổ sung đủ 20 ca bằng GPT-4o-mini
 
-**Lý do:** Gemini chỉ trả kết quả 4/15 lượt nên không thể đánh giá các nhóm ca khó. Nhóm chạy lại **cùng system prompt** (lấy từ `system_prompt.txt` trong log Gemini), cùng 20 ca và cùng đáp án trên `gpt-4o-mini` (OpenAI, `temperature=0`, JSON schema strict). Đây là **thử nghiệm so sánh bổ sung**; file `prompt_prototype.py` nộp bài vẫn dùng Gemini SDK theo yêu cầu lab. Log: [`results/vinfast_intake_gpt/20261107_233952_5d7843c5/`](results/vinfast_intake_gpt/20261107_233952_5d7843c5/summary.md).
+**Lý do:** Gemini chỉ trả kết quả 4/15 lượt nên không thể đánh giá các nhóm ca khó. Nhóm chạy lại **cùng system prompt** (lấy từ `system_prompt.txt` trong log Gemini), cùng 20 ca và cùng đáp án trên `gpt-4o-mini` (OpenAI, `temperature=0`, JSON schema strict). Đây là **thử nghiệm so sánh bổ sung**; file `prompt_prototype.py` nộp bài vẫn dùng Gemini SDK theo yêu cầu lab. Log: [`results/vinfast_intake_gpt/20261107_233952_5d7843c5/`](results/vinfast_intake_gpt/20261107_233952_5d7843c5/summary.md). Script chạy lại (`tools/gpt_eval.py`) được lưu ngoài `main` vì quy định không merge file `.py` vào `main`.
 
 **Kết quả tổng:**
 
