@@ -9,7 +9,7 @@
 | 3 | Nguyễn Công Tĩnh | tinh22102004@gmail.com |
 | 4 | Vũ Trí Dũng | dungvutri25@gmail.com |
 | 5 | Phạm Quang Trường | truongpham090325@gmail.com |
-| 6 | Dương | khongtienduongcv@gmail.com |
+| 6 | Khổng Tiến Dương | khongtienduongcv@gmail.com |
 
 **Người viết nội dung gốc:** Lưu Văn Việt Đức
 **Ngày tổng hợp:** 07/11/2026

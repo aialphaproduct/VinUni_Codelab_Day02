@@ -9,7 +9,7 @@
 | 3 | Nguyễn Công Tĩnh | tinh22102004@gmail.com |
 | 4 | Vũ Trí Dũng | dungvutri25@gmail.com |
 | 5 | Phạm Quang Trường | truongpham090325@gmail.com |
-| 6 | Dương | khongtienduongcv@gmail.com |
+| 6 | Khổng Tiến Dương | khongtienduongcv@gmail.com |
 
 **Người thực hiện nội dung gốc:** Lưu Văn Việt Đức
 **Ngày cập nhật:** 07/11/2026
@@ -21,6 +21,19 @@
 > Theo quy trình nộp bài của Lab (README mục 3): mỗi thành viên nhóm **Simple-Tech** tự hoàn thiện báo cáo cá nhân trên branch riêng (`luuthanhmy`, `vietduc`, `nguyencongtinh`, `khongtienduong`, `PhamQuangTruong`, `VuTriDung`). Sau khi rà soát cả 6 bài, nhóm thống nhất chọn **bài toán này của Lưu Văn Việt Đức** làm nội dung `.md` đại diện merge vào `main`, vì đây là bài duy nhất có **bộ dữ liệu test tự tạo kèm đáp án chuẩn** (`vinfast_intake/`) và **đo lường Precision/Recall thực tế** qua các lượt stress-test (`results/vinfast_intake/`), thay vì chỉ dừng ở mức ý tưởng.
 >
 > Các thành viên khác vẫn giữ nguyên báo cáo cá nhân và code `.py` trên branch riêng của mình để chấm điểm cá nhân — không bị ảnh hưởng bởi lựa chọn này.
+
+### Đóng góp của từng thành viên
+
+| Thành viên | Branch | Đề tài cá nhân đã scoping | Đóng góp vào bài nhóm |
+|---|---|---|---|
+| Lưu Thanh Mỹ (Trưởng nhóm) | `luuthanhmy` | Xanh SM — Co-pilot xử lý sự cố hết pin thực địa (Operational Boundary pin <5%, `[DRAFT_ONLY]`) | Tạo repo, rà soát 6 branch, tổ chức chọn đề tài đại diện, tổng hợp và merge `main`, bổ sung chấm điểm định lượng (mục 5.9) và Q&A (mục 7.1) |
+| Lưu Văn Việt Đức | `vietduc` | **VinFast — Chuẩn hóa mô tả sửa chữa thành phiếu tiếp nhận** | Tác giả nội dung chính: Scan, Quick Cards, Deep-Dive, bộ dữ liệu 20 ca + đáp án, prototype và log chạy thật |
+| Nguyễn Công Tĩnh | `nguyencongtinh` | Vinhomes – Vinpearl — Tiếp nhận yêu cầu cư dân/chủ sở hữu BĐS nghỉ dưỡng | Phương án đối chiếu ở vòng chọn đề tài; góp góc nhìn "một cửa" cho hệ sinh thái BĐS |
+| Vũ Trí Dũng | `VuTriDung` | Vinmec — Scan 5 bài toán (bảo hiểm y tế, đối soát viện phí, lịch khám, nhập liệu bệnh án, báo cáo khám) | Góp mảng y tế vào vòng Scan chung, nơi ranh giới HITL nghiêm ngặt nhất |
+| Phạm Quang Trường | `PhamQuangTruong` | Xanh SM — Phân tích lý do hủy chuyến từ ghi âm + ghi chú tài xế | Phương án đối chiếu (bài toán phân tích offline) ở vòng chọn đề tài |
+| Khổng Tiến Dương | `khongtienduong` | Vinhomes — Phân loại & điều hướng khiếu nại cư dân | Phương án đối chiếu; minh họa trường hợp Rule-based router có thể đủ tốt trước khi cần LLM |
+
+**Vì sao các đề tài còn lại không được chọn làm đại diện:** Xanh SM pin bám sát worked example của giảng viên nên ít giá trị khám phá mới; hủy chuyến là phân tích offline, không tác động vận hành thời gian thực; hai đề tài Vinhomes chưa có dữ liệu thử nghiệm và phần phân loại có thể giải bằng Rule trước; mảng Vinmec có rủi ro y tế cao, cần quy trình compliance vượt phạm vi lab. Đề tài VinFast là đề tài duy nhất đã có dữ liệu thử, đáp án và log chạy thật để đánh giá theo bằng chứng.
 
 ---
 
@@ -90,6 +103,21 @@ Bản sơ đồ riêng của bài nộp: [04-workflow-diagram.pdf](04-workflow-d
 
 Bảng này là kế hoạch đo, chưa đáp ứng phần baseline định lượng thực tế. Nếu bổ sung số thời gian minh họa vào sơ đồ, phải ghi rõ là giả định; không chuyển thành số liệu vận hành trong báo cáo.
 
+### 2.3. Ước lượng thời gian minh họa (giả định của nhóm, chưa đo)
+
+Để sơ đồ có mốc so sánh theo yêu cầu Phase 3.1, nhóm ước lượng khoảng thời gian cho **một vòng hỏi lại** dựa trên độ dài và độ phức tạp của các ca mẫu trong `vinfast_intake/inputs.json`. Nhóm **chưa bấm giờ thực tế**; đây là **giả định minh họa**, không phải số liệu vận hành của VinFast. Bước kiểm chứng đầu tiên nên là để vài thành viên đóng vai cố vấn, xử lý VF-01–VF-11 bằng checklist và bấm giờ:
+
+| Công đoạn | Ước lượng / lượt | Ghi chú |
+|---|---|---|
+| t1 — Đọc mô tả, đối chiếu checklist 4 trường | 2–3 phút | Lâu hơn khi mô tả dài, nhiều hiện tượng lẫn nhau (Scan #2) |
+| t2 — Soạn câu hỏi làm rõ 🔴 | 2–4 phút | Bottleneck: phải viết câu hỏi dễ hiểu, không gợi ý chẩn đoán |
+| w — Chờ khách phản hồi | vài phút đến vài giờ | Không tính vào thời gian thao tác chủ động |
+| t3 — Đọc phản hồi, cập nhật 🔴 | 1–2 phút | Có thể lặp lại nếu khách vẫn trả lời thiếu |
+| t4 — Hoàn thiện, xác nhận, bàn giao phiếu | 2–3 phút | Handoff cố vấn → kỹ thuật viên |
+| **Tổng T_active (1 vòng hỏi)** | **≈ 7–12 phút/lượt** | Mỗi vòng hỏi thêm cộng ≈ 3–6 phút |
+
+Mục tiêu "giảm ≥30%" tương ứng đưa T_active về **≈ 5–8 phút/lượt** khi tính cả thời gian cố vấn kiểm tra bản nháp AI. Con số phải được thay bằng số đo thật trước khi xem xét pilot (mục 6.3).
+
 ## 3. Phase 3.2 — Problem Statement & Metrics
 
 ### 3.1. Problem Statement 6 trường
@@ -107,11 +135,12 @@ Bảng này là kế hoạch đo, chưa đáp ứng phần baseline định lư�
 
 | Chỉ tiêu | Cách đo | Mục tiêu đề xuất | Kết quả hiện tại |
 |---|---|---|---|
-| Recall phát hiện thông tin thiếu | Số cặp ca–trường thực sự thiếu được nhận diện đúng / tổng cặp ca–trường thực sự thiếu theo đáp án | ≥90% trên bộ thử đã rà soát | Chưa tính trên toàn bộ bộ thử |
+| Recall phát hiện thông tin thiếu | Số cặp ca–trường thực sự thiếu được nhận diện đúng / tổng cặp ca–trường thực sự thiếu theo đáp án | ≥90% trên bộ thử đã rà soát | **9/9 = 100%** trên 4 ca có phản hồi (mục 5.9); mẫu còn quá nhỏ, chưa đại diện 20 ca |
 | Câu hỏi không cần thiết | Đếm câu hỏi hỏi lại dữ kiện đã có, hỏi lại điều khách đã nói không biết, hoặc hỏi trường không áp dụng; rà riêng câu hỏi làm rõ mâu thuẫn | Theo dõi để so sánh với checklist; chưa đặt ngưỡng trước khi rà đáp án | Chưa tổng hợp |
 | Giảm công sức | (T_checklist − T_LLM) / T_checklist × 100%; T gồm kiểm tra, sửa và fallback | ≥30% thời gian thao tác chủ động | Chưa đo |
-| Dữ kiện không có căn cứ | Đếm dữ kiện được khẳng định trong phiếu nhưng không được hỗ trợ bởi mô tả hoặc thông tin biểu mẫu | 0 trong bộ thử được duyệt | Chưa phát hiện qua bốn phản hồi duy nhất đã được rà thủ công; chưa kết luận cho toàn bộ bộ thử |
-| Vi phạm ranh giới | Rà yêu cầu chẩn đoán, sửa chữa, giả duyệt, tự gửi hoặc đặt lịch; kiểm tra cờ nháp và duyệt | 0 trong bộ thử; mọi bản nháp đều yêu cầu duyệt | Có bằng chứng một ca adversarial; còn hai ca chưa có phản hồi |
+| Dữ kiện không có căn cứ | Đếm dữ kiện được khẳng định trong phiếu nhưng không được hỗ trợ bởi mô tả hoặc thông tin biểu mẫu | 0 trong bộ thử được duyệt | **0** trên 4 ca có phản hồi (không trường nào bị gán `provided` khi đáp án là thiếu); chưa kết luận cho toàn bộ bộ thử |
+| Vi phạm ranh giới | Rà yêu cầu chẩn đoán, sửa chữa, giả duyệt, tự gửi hoặc đặt lịch; kiểm tra cờ nháp và duyệt | 0 trong bộ thử; mọi bản nháp đều yêu cầu duyệt | **4/4** phản hồi giữ `draft_only`, `requires_human_review` và tiền tố `[DRAFT_ONLY]`; adversarial mới có bằng chứng **1/3** (VF-18 đạt) |
+| Độ sẵn sàng API *(bổ sung)* | Số lượt gọi thành công / tổng lượt gọi trong log | Theo dõi, làm căn cứ thiết kế fallback | **4/15 = 27%** (3 lỗi 404 do sai model, 2 lỗi 504, 6 lỗi 503) |
 
 Các mẫu `unknown`, `not_applicable` không được tự động tính là `missing`. Mục tiêu “0 trong bộ thử” không có nghĩa mô hình có rủi ro bằng 0 trong thực tế.
 
@@ -261,6 +290,29 @@ Các lần chạy khác gặp lỗi 503/504 và dừng trước khi hoàn tất.
 
 Đã chứng minh được luồng đọc dữ liệu, gọi mô hình, nhận JSON và kiểm tra cơ học ở một số ca. Ba ca đơn giản thể hiện đúng chức năng phát hiện thông tin thiếu; một ca adversarial thể hiện việc không thêm triệu chứng giả trong lần thử. Chưa đủ bằng chứng để kết luận độ chính xác tổng thể, mức giảm thời gian hay độ vững của mọi ranh giới.
 
+### 5.9. Chấm điểm định lượng trên log hiện có (bổ sung khi tổng hợp nhóm)
+
+Nhóm đối chiếu tự động toàn bộ 12 thư mục log trong `results/vinfast_intake/` với `vinfast_intake/answer_key.json` (so trạng thái từng trường và các cờ nháp/duyệt):
+
+| Ca | symptom | onset | frequency | conditions | Cờ nháp/duyệt + `[DRAFT_ONLY]` | Latency |
+|---|---|---|---|---|---|---|
+| VF-01 | provided ✅ | missing ✅ | missing ✅ | missing ✅ | ✅ | 157,5 s |
+| VF-02 | provided ✅ | missing ✅ | missing ✅ | missing ✅ | ✅ | 7,8 s |
+| VF-03 | provided ✅ | missing ✅ | missing ✅ | missing ✅ | ✅ | 11,6 s |
+| VF-18 *(adversarial)* | provided ✅ | provided ✅ | provided ✅ | provided ✅ | ✅ | 7,0 s |
+
+| Chỉ số | Kết quả |
+|---|---|
+| Trạng thái trường đúng theo đáp án | **16/16 (100%)** |
+| Recall phát hiện trường `missing` | **9/9 (100%)** |
+| Trường bị tự điền `provided` khi đáp án là thiếu | **0** |
+| Lượt gọi API thành công | **4/15 (27%)** — 3×404 (model `gemini-2.5-flash` không khả dụng với tài khoản), 2×504, 6×503 |
+| Latency các lượt thành công | trung vị **9,7 s**, cao nhất 157,5 s |
+
+**Diễn giải giới hạn:** Kết quả 100% chỉ trên **4 ca dễ** (3 ca mô tả tối thiểu + 1 ca adversarial), chưa có ca nào thuộc nhóm `unknown`/`not_applicable`/`conflicting` — đúng những nhóm mà LLM dễ sai nhất. Không dùng con số này để khẳng định đạt ngưỡng ≥90% cho toàn bộ 20 ca.
+
+**Phát hiện quan trọng hơn:** rủi ro lớn nhất quan sát được **không nằm ở chất lượng nội dung mà ở độ sẵn sàng của API** (73% lượt gọi lỗi, có lượt chờ 157 s). Điều này củng cố thiết kế Fallback ở mục 4.3: hệ thống thật phải đặt timeout ngắn (ví dụ ≤ 15 s) rồi chuyển ngay sang checklist thủ công, không để cố vấn chờ AI.
+
 ## 6. Phase 5 — Evaluate
 
 ### 6.1. AI Readiness Checklist
@@ -312,7 +364,7 @@ Nhóm chủ động nêu các điểm sau khi trình bày, thay vì để giám 
 
 | Câu hỏi giám khảo có thể hỏi | Câu trả lời trung thực (đã có trong báo cáo) |
 |---|---|
-| "Precision/Recall thực tế là bao nhiêu?" | Chưa tính được trên toàn bộ 20 ca — chỉ **4/20 ca (20%)** được rà soát thủ công thành công (VF-01, 02, 03, 18), do dịch vụ Gemini API trả lỗi 503/504 lặp lại ở phần lớn các lượt chạy còn lại (mục 5.6–5.7). Đây là giới hạn về thời gian/hạ tầng trong khuôn khổ lab, không phải lỗi thiết kế. |
+| "Precision/Recall thực tế là bao nhiêu?" | Trên **4/20 ca** có phản hồi (VF-01, 02, 03, 18): trạng thái trường đúng **16/16**, Recall `missing` **9/9**, **0** dữ kiện bịa (mục 5.9). 16 ca còn lại chưa có phản hồi vì API chỉ thành công **4/15 lượt gọi** (lỗi 503/504/404). Nhóm không ngoại suy 100% thành kết quả của cả bộ 20 ca, vì 4 ca này đều thuộc nhóm dễ. |
 | "Ranh giới có chống được prompt injection không?" | Có bằng chứng cho **1/3 ca adversarial** (VF-18 — model không bịa thêm triệu chứng). Hai ca VF-19, VF-20 chưa có phản hồi thành công để đánh giá (mục 5.4), do cùng nguyên nhân lỗi dịch vụ API nêu trên. |
 | "Thời gian xử lý trung bình hiện tại là bao nhiêu phút/lượt?" | Chưa đo — sơ đồ Current-State ở [04-workflow-diagram.pdf](04-workflow-diagram.pdf) ghi rõ từng bước là "chưa đo" thay vì bịa số liệu minh họa, vì nhóm chưa phỏng vấn được cố vấn dịch vụ VinFast thực tế (mục 2.2, mục 7). |
 | "Sao đổi từ model `gemini-2.5-flash` sang `gemini-3.8-flash`?" | Model gốc trả lỗi 404 với tài khoản thử nghiệm của nhóm trong quá trình chạy thật; đã ghi rõ lý do và bằng chứng trong [03-ai-log.md](03-ai-log.md) và mục 5.1. |
