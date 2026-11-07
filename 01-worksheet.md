@@ -121,7 +121,7 @@ Trong 5 bài toán mình vừa nêu trên thì mình sẽ chọn 3 bài toán m�
 │                                                                      │
 │ Bài toán (1 câu):                                                    │
 │ Tự động kiểm tra quyền lợi bảo hiểm và phát hiện hồ sơ thiếu giấy tờ │
-│ trước khi gửi yêu cầu thanh toán.                                    │
+│ trước khi gửi yêu cầu phê duyệt thanh toán.                          │
 │                                                                      │
 │ Công ty thành viên: [ ] VinFast  [ ] Xanh SM  [ ] Vinhomes           │
 │                     [x] Vinmec   [ ] Khác: __________                │
@@ -134,18 +134,25 @@ Trong 5 bài toán mình vừa nêu trên thì mình sẽ chọn 3 bài toán m�
 │ --> 3. Đối chiếu dịch vụ --> 4. Kiểm tra giấy tờ --> 5. Gửi duyệt    │
 │                                                                      │
 │ Bước nào tốn thời gian/lỗi nhất?                                     │
-│ Bước 2-4: Đối chiếu điều khoản, dịch vụ và giấy tờ. (15-20 phút/lượt)│
+│ Kiểm tra và xử lý prior authorization.                               │
+│ (Benchmark: 24 phút/giao dịch thủ công - CAQH 2024)                  │
 │ AI có thể nhảy vào hỗ trợ ở bước nào?                                │
 │ OCR trích xuất, LLM đọc điều khoản và cảnh báo hồ sơ thiếu.          │
 │                                                                      │
 │ Đo thành công bằng gì (Metric có số)?                                │
-│ Giảm thời gian kiểm tra từ 15 phút xuống dưới 5 phút/hồ sơ.          │
-│ Độ chính xác trích xuất thông tin đạt ít nhất 95%.                   │
+│ Benchmark CAQH: 24 phút thủ công --> 10 phút điện tử.                │
+│ Mục tiêu khảo sát: đo thời gian xử lý và tỷ lệ hồ sơ bị từ chối.     │
 │                                                                      │
 │ Quick Architecture: [ ] No AI  [ ] Rule  [x] LLM  [ ] Agent          │
 └──────────────────────────────────────────────────────────────────────┘
+
 ```
 
+Nguồn trích dẫn: CAQH 2024 Index và khảo sát AMA 2024.
+
+- CAQH: kiểm tra quyền lợi bảo hiểm mất trung bình 16 phút khi làm thủ công, so với 4 phút khi xử lý điện tử.
+- CAQH: prior authorization mất 24 phút thủ công, so với 10 phút khi xử lý điện tử.
+- AMA: bác sĩ và nhân viên dành trung bình 13 giờ mỗi tuần cho prior authorization; trung bình 39 yêu cầu mỗi bác sĩ mỗi tuần.
 <!-- prettier-ignore-end -->
 
 2. Problem #4: Đối soát viện phí, mã dịch vụ và hóa đơn.
@@ -171,17 +178,24 @@ Trong 5 bài toán mình vừa nêu trên thì mình sẽ chọn 3 bài toán m�
 │ --> 5. Phát hiện và xử lý sai lệch.                                  │
 │                                                                      │
 │ Bước nào tốn thời gian/lỗi nhất?                                     │
-│ Bước 2-4: Đối chiếu dữ liệu từ nhiều hệ thống. (8-12 phút/lượt)      │
+│ Đối chiếu dữ liệu và xử lý sai lệch giữa các hệ thống.               │
+│ (Benchmark tham khảo: 12 phút/claim submission thủ công - CAQH 2024) │
 │ AI có thể nhảy vào hỗ trợ ở bước nào?                                │
 │ Đối chiếu hóa đơn, phát hiện mã dịch vụ và đơn giá bất thường.       │
 │                                                                      │
 │ Đo thành công bằng gì (Metric có số)?                                │
-│ Giảm thời gian đối soát từ 10 phút xuống dưới 3 phút/hồ sơ.          │
-│ Độ chính xác đối chiếu đạt ít nhất 98%.                              │
+│ Benchmark tham khảo: Initial claim denial rate 11,6% (2025).         │
+│ Theo dõi tỷ lệ từ chối, tỷ lệ đối soát chính xác và thời gian xử lý. │
 │                                                                      │
 │ Quick Architecture: [ ] No AI  [x] Rule  [ ] LLM  [ ] Agent          │
 └──────────────────────────────────────────────────────────────────────┘
 ```
+Nguồn trích dẫn: CAQH 2024 Index và Kodiak Solutions 2025 Revenue Cycle Benchmark.
+
+- CAQH: gửi yêu cầu thanh toán (claim submission) mất 12 phút thủ công, so với 5 phút khi xử lý điện tử.
+- CAQH: tra cứu trạng thái yêu cầu thanh toán mất 25 phút thủ công, so với 7 phút khi xử lý điện tử.
+- Kodiak Solutions: tỷ lệ initial claim denial trung bình của các bệnh viện trong bộ dữ liệu năm 2025 là 11,6%, tăng từ 11,4% năm 2024. Dữ liệu tổng hợp từ 2.300 bệnh viện.
+
 <!-- prettier-ignore-end -->
 
 3. Problem #5: Soạn thảo và hoàn thiện hồ sơ khám chữa bệnh.
@@ -206,17 +220,26 @@ Trong 5 bài toán mình vừa nêu trên thì mình sẽ chọn 3 bài toán m�
 │ --> 3. Nhập dữ liệu --> 4. Soạn ghi chú --> 5. Kiểm tra hồ sơ        │
 │                                                                      │
 │ Bước nào tốn thời gian/lỗi nhất?                                     │
-│ Bước 3-4: Nhập liệu và tổng hợp thông tin. (5-10 phút/lượt khám)     │
+│ Nhập liệu và tổng hợp thông tin vào hồ sơ bệnh án.                   │
+│ (Benchmark: 10,3 phút/lượt khám - nghiên cứu JAMA 2025)              │
 │ AI có thể nhảy vào hỗ trợ ở bước nào?                                │
 │ Chuyển giọng nói thành văn bản, tóm tắt và điền mẫu bệnh án.         │
 │                                                                      │
 │ Đo thành công bằng gì (Metric có số)?                                │
-│ Giảm 50% thời gian hoàn thiện ghi chú bệnh án.                       │
-│ 100% ghi chú AI tạo ra phải được bác sĩ xác nhận.                    │
+│ Benchmark nghiên cứu: 10,3 --> 8,2 phút/lượt khám (-20,4%).          │
+│ Theo dõi độ chính xác nội dung và tỷ lệ ghi chú phải chỉnh sửa.      │
 │                                                                      │
 │ Quick Architecture: [ ] No AI  [ ] Rule  [x] LLM  [ ] Agent          │
 └──────────────────────────────────────────────────────────────────────┘
 ```
+
+Nguồn trích dẫn: nghiên cứu trên JAMA Network Open năm 2025.
+
+Nghiên cứu trên 46 nhân viên y tế thuộc 17 chuyên khoa cho thấy sau khi sử dụng công cụ AI ambient scribe:
+
+- Thời gian ghi chú mỗi lượt khám giảm từ 10,3 xuống 8,2 phút.
+- Giảm 20,4% thời gian ghi chú.
+- Thời gian làm hồ sơ ngoài giờ giảm từ 50,6 xuống 35,4 phút/ngày, tương đương giảm 30%.
 
 ## <!-- prettier-ignore-end -->
 
