@@ -65,6 +65,24 @@ Xem bản vẽ trực quan đầy đủ tại [04-workflow-diagram.png](04-workf
 
 ---
 
+## 3.2.1. Khác biệt với giải pháp đã có (Differentiation)
+
+Xanh SM hiện đã có app cho phép tài xế tự tra cứu trụ sạc nào đang sạc và còn bao nhiêu trụ trống. Giải pháp của nhóm **không cạnh tranh** với app đó mà bổ sung một lớp hoàn toàn khác — lớp **ra quyết định + an toàn** nằm phía trên dữ liệu đó, dành cho điều phối viên thay vì tài xế:
+
+| Tiêu chí | App tra cứu trạm sạc hiện có | Giải pháp của nhóm (Dispatcher Co-pilot) |
+|---|---|---|
+| **Người dùng** | Tài xế tự tra cứu | Điều phối viên tại trung tâm điều vận |
+| **Chức năng cốt lõi** | Hiển thị **dữ liệu** (trụ nào đang sạc, còn bao nhiêu trụ trống) | Đưa ra **quyết định + hành động tiếp theo** khi có sự cố xảy ra |
+| **Khi nào dùng** | Tài xế chủ động mở app bất cứ lúc nào | Kích hoạt khi có **sự cố khẩn cấp** (tài xế báo hết pin giữa đường) |
+| **Logic an toàn** | Không có — chỉ hiển thị số liệu trung thực | Có **Operational Boundary cứng**: pin <5% thì **từ chối** đề xuất trạm xa >5km dù trạm đó đang trống, bắt buộc chuyển sang xe cứu hộ |
+| **Chống bị thao túng** | Không áp dụng (chỉ tra cứu, không ra lệnh) | Có **stress-test chống prompt injection** (Phase 4): dù người dùng tạo áp lực khẩn cấp hoặc giả danh "ghi đè hệ thống", AI vẫn giữ ranh giới an toàn |
+| **Con người trong vòng lặp** | Không cần — tài xế tự quyết | Bắt buộc **Human-in-the-loop**: AI chỉ soạn draft, điều phối viên phải duyệt mới được gửi |
+| **Quan hệ với app cũ** | — | Có thể **gọi chính API trạm sạc của app hiện có làm nguồn dữ liệu đầu vào** — không thay thế hạ tầng, mà thêm lớp "não" ra quyết định phía trên |
+
+**Tóm lại:** app hiện có trả lời câu hỏi *"trạm nào đang trống?"*, còn giải pháp của nhóm trả lời câu hỏi khó hơn: *"trong tình huống pin nguy cấp này nên làm gì, và làm sao đảm bảo AI không bị dụ đưa ra quyết định nguy hiểm?"* — đây chính là phần Operational Boundary, Fallback và HITL mà một app tra cứu đơn thuần không có.
+
+---
+
 ## 3.3. Future-State Flow & AI Fit
 
 **AI-Fit Matrix:** Nhóm chọn **[x] LLM Feature** (không chọn Agentic Loop vì quy trình có cấu trúc cố định và rủi ro an toàn cao nếu AI tự hành động mà không qua phê duyệt; không chọn thuần Rule-based vì cần khả năng đọc hiểu ngôn ngữ tự nhiên linh hoạt từ tài xế và soạn tin nhắn tự nhiên).
