@@ -14,6 +14,11 @@ import os
 import sys
 from typing import Any
 
+# Piped stdout on Windows defaults to cp1252, which cannot print the emoji below (autograder runs us via a pipe).
+for _stream in (sys.stdout, sys.stderr):
+    if hasattr(_stream, "reconfigure"):
+        _stream.reconfigure(encoding="utf-8", errors="replace")
+
 # Model Identifier — gemini-2.5-flash returned 404 for the team's accounts on 2026-11-07;
 # override with $env:GEMINI_MODEL if this one is unavailable or overloaded.
 GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.8-flash")
