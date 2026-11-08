@@ -1,17 +1,17 @@
 > ## 📦 Bài nộp nhóm Simple-Tech
 >
-> **Đề tài chính:** Xanh SM — Dispatcher Co-pilot xử lý sự cố hết pin thực địa (kiến trúc Rule + LLM + HITL, đo trên 24 ca: 24/24 đạt).
+> **Đề tài chính:** VinFast Service Intake Co-pilot — *"Hỏi đúng ngay từ lần đầu"*: trợ lý giúp cố vấn dịch vụ phát hiện thông tin còn thiếu trong mô tả sửa chữa của khách và soạn câu hỏi làm rõ (Rule + LLM + HITL, đo trên 20 ca).
 >
 > | File | Nội dung |
 > |---|---|
 > | [01-problem-scan.md](01-problem-scan.md) | Bảng Scan đề tài của 6 thành viên + 3 Quick Problem Cards |
-> | [02-deep-dive-report.md](02-deep-dive-report.md) | Workflow, Problem Statement 6 trường, AI Fit có số liệu, kết quả đo 4 lượt, quyết định GO (shadow mode) |
+> | [02-deep-dive-report.md](02-deep-dive-report.md) | Workflow, Problem Statement 6 trường, AI Fit, kết quả đo trên 2 model, quyết định NOT YET kèm lộ trình 3 bước tới GO |
 > | [03-ai-log.md](03-ai-log.md) | Nhật ký dùng AI: giúp gì, sai ở đâu, sửa thế nào + phản tư từng thành viên |
 > | [04-workflow-diagram.png](04-workflow-diagram.png) | Sơ đồ hiện trạng và tương lai |
-> | [xanhsm_cases/](xanhsm_cases/README.md) · [results/xanhsm/](results/xanhsm/) | Bộ thử 24 ca + đáp án; log 4 lượt chạy |
-> | [phu-luc-vinfast/](phu-luc-vinfast/02-deep-dive-report.md) | Bài đối chiếu VinFast của Lưu Văn Việt Đức (dữ liệu và log giữ nguyên) |
+> | [phu-luc-vinfast/](phu-luc-vinfast/02-deep-dive-report.md) | Bản gốc của Lưu Văn Việt Đức, bộ dữ liệu 20 ca + đáp án, log Gemini và GPT-4o-mini |
+> | [phu-luc-xanhsm/](phu-luc-xanhsm/02-deep-dive-report.md) | Thử nghiệm Xanh SM (24 ca, 4 lượt đo) — bằng chứng cho bài học "quyết định tất định để code làm" |
 >
-> **Code `.py` (chấm cá nhân)** nằm trên branch riêng của từng thành viên, không merge vào `main` theo quy định bên dưới. Script đo `tools/xanhsm_eval.py` ở branch `luuthanhmy`.
+> **Code `.py` (chấm cá nhân)** nằm trên branch riêng của từng thành viên, không merge vào `main` theo quy định bên dưới.
 
 ---
 

@@ -13,9 +13,9 @@
 
 **Người thực hiện nội dung gốc:** Lưu Văn Việt Đức
 **Ngày cập nhật:** 07/11/2026
-**Phạm vi đóng góp:** **Phụ lục — bài đối chiếu của nhóm Simple-Tech.** Đây là bài cá nhân của Lưu Văn Việt Đức, từng được chọn làm bài đại diện; sau khi nhóm nâng cấp đề tài Xanh SM bằng dữ liệu đo thật, bài chính chuyển sang [Xanh SM](../02-deep-dive-report.md). Bài này được giữ nguyên trên `main` vì **phương pháp đánh giá của Đức (bộ ca giả lập + đáp án + log + chấm tự động) là nền tảng nhóm kế thừa cho bài Xanh SM**.
+**Phạm vi đóng góp:** **Bản gốc của Lưu Văn Việt Đức** cho đề tài chính của nhóm. Bài chính trên `main` ([02-deep-dive-report.md](../02-deep-dive-report.md)) là bản nhóm biên tập lại từ bản này, dùng chung bộ dữ liệu `vinfast_intake/` và log `results/` trong thư mục này.
 
-> Các mục 2.3, 5.9, 5.10 và 7.1 do nhóm bổ sung khi bài này còn là bài đại diện (chấm log Gemini 4 ca, chạy đủ 20 ca bằng GPT-4o-mini kèm lớp Rule). Nội dung gốc của Đức được giữ nguyên.
+> Các mục 2.3, 5.9, 5.10 và 7.1 do nhóm bổ sung khi tổng hợp (chấm log Gemini 4 ca, chạy đủ 20 ca bằng GPT-4o-mini kèm lớp Rule). Nội dung gốc của Đức được giữ nguyên.
 
 ---
 

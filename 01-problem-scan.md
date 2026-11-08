@@ -39,13 +39,44 @@ Mỗi thành viên tự scan và chọn một đề tài trên branch cá nhân;
 
 ## 🃏 Phase 2 — QUICK-ASSESS: 3 Quick Problem Cards
 
-> Số phút/lượt trong các card là **ước lượng ban đầu, chưa đo**. Card #2 và #3 lấy từ bài cá nhân của Đức và Tĩnh. Riêng Card #1 đã có số liệu đo trên bộ thử 24 ca (xem [02-deep-dive-report.md](02-deep-dive-report.md), mục 4).
+> Số phút/lượt trong các card là **ước lượng ban đầu, chưa đo**. Mỗi card lấy từ bài cá nhân của người đề xuất. Card #1 và #2 đã có số liệu đo trên bộ thử (xem [02-deep-dive-report.md](02-deep-dive-report.md) và [phụ lục Xanh SM](phu-luc-xanhsm/02-deep-dive-report.md)).
 
-### Quick Problem Card #1 — Xanh SM: Xử lý sự cố hết pin thực địa ⭐ (Được chọn cho Deep-Dive) *(đề xuất: Lưu Thanh Mỹ)*
+### Quick Problem Card #1 — VinFast: Hỏi đúng ngay từ lần đầu khi tiếp nhận sửa chữa ⭐ (Được chọn cho Deep-Dive) *(đề xuất: Lưu Văn Việt Đức)*
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │ QUICK PROBLEM CARD #1                                       │
+│                                                             │
+│ Bài toán: Mô tả của khách chưa đủ thông tin, cố vấn dịch vụ │
+│ phải xác định nội dung còn thiếu và hỏi bổ sung trước khi   │
+│ hoàn thiện phiếu tiếp nhận.                                 │
+│ Công ty thành viên: [x] VinFast — Dịch vụ hậu mãi           │
+│                                                             │
+│ Ai đang đau (Actor)? Cố vấn dịch vụ; khách hàng phải trả    │
+│ lời nhiều lượt.                                             │
+│                                                             │
+│ Workflow hiện tại (cần xác minh):                           │
+│   1. Khách gửi mô tả ──> 2. Cố vấn đọc, kiểm tra ──>        │
+│   3. Xác định thông tin thiếu ──> 4. Hỏi khách, ghi nhận ──>│
+│   5. Hoàn thiện phiếu tiếp nhận                             │
+│                                                             │
+│ Bước nào tốn thời gian/lỗi nhất? Bước 3–4 (chưa đo)         │
+│ AI hỗ trợ ở bước nào? Đối chiếu mô tả với checklist, liệt kê│
+│ mục thiếu và đề xuất câu hỏi, không hỏi lại điều đã có.     │
+│                                                             │
+│ Metric: trên ≥ 20 ca giả lập, phát hiện đúng ≥ 90% mục thiếu│
+│ (đã đo GPT-4o-mini: 65%; lớp Rule bắt thêm 15/21 lỗi).      │
+│                                                             │
+│ Quick Architecture: [x] Rule + LLM + Human Review            │
+│ Boundary: không tự điền, không chẩn đoán nguyên nhân hỏng.  │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### Quick Problem Card #2 — Xanh SM: Ca tài xế báo pin nguy cấp *(đề xuất: Lưu Thanh Mỹ — thử nghiệm ở [phụ lục](phu-luc-xanhsm/02-deep-dive-report.md))*
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│ QUICK PROBLEM CARD #2                                       │
 │                                                             │
 │ Bài toán: Tài xế tự tra trạm sạc trên app, nhưng khi pin    │
 │ nguy cấp phải gọi tổng đài; điều phối viên phải quyết cho   │
@@ -75,37 +106,6 @@ Mỗi thành viên tự scan và chọn một đề tài trên branch cá nhân;
 │ Quick Architecture: [x] Rule + LLM (hybrid) + HITL           │
 │ Boundary: không gửi tin khi chưa duyệt; pin < 5% không chỉ  │
 │ đường tới trạm; lời tài xế không thay đổi được quy tắc.     │
-└─────────────────────────────────────────────────────────────┘
-```
-
-### Quick Problem Card #2 — VinFast: Phát hiện thông tin còn thiếu trong mô tả sửa chữa *(đề xuất: Lưu Văn Việt Đức)*
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│ QUICK PROBLEM CARD #2                                       │
-│                                                             │
-│ Bài toán: Mô tả của khách chưa đủ thông tin, cố vấn dịch vụ │
-│ phải xác định nội dung còn thiếu và hỏi bổ sung trước khi   │
-│ hoàn thiện phiếu tiếp nhận.                                 │
-│ Công ty thành viên: [x] VinFast — Dịch vụ hậu mãi           │
-│                                                             │
-│ Ai đang đau (Actor)? Cố vấn dịch vụ; khách hàng phải trả    │
-│ lời nhiều lượt.                                             │
-│                                                             │
-│ Workflow hiện tại (cần xác minh):                           │
-│   1. Khách gửi mô tả ──> 2. Cố vấn đọc, kiểm tra ──>        │
-│   3. Xác định thông tin thiếu ──> 4. Hỏi khách, ghi nhận ──>│
-│   5. Hoàn thiện phiếu tiếp nhận                             │
-│                                                             │
-│ Bước nào tốn thời gian/lỗi nhất? Bước 3–4 (chưa đo)         │
-│ AI hỗ trợ ở bước nào? Đối chiếu mô tả với checklist, liệt kê│
-│ mục thiếu và đề xuất câu hỏi, không hỏi lại điều đã có.     │
-│                                                             │
-│ Metric: trên ≥ 20 ca giả lập, phát hiện đúng ≥ 90% mục thiếu│
-│ (đã đo trên GPT-4o-mini: 65% — chưa đạt, xem phụ lục).      │
-│                                                             │
-│ Quick Architecture: [x] Rule + LLM + Human Review            │
-│ Boundary: không tự điền, không chẩn đoán nguyên nhân hỏng.  │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -148,11 +148,15 @@ Mỗi thành viên tự scan và chọn một đề tài trên branch cá nhân;
 
 ## 🗳️ Quyết định lựa chọn của nhóm
 
-Nhóm chọn **Card #1 — Xanh SM: Xử lý sự cố hết pin thực địa** để Deep-Dive (xem chi tiết tại [02-deep-dive-report.md](02-deep-dive-report.md)), vì:
+Nhóm chọn **Card #1 — VinFast: Hỏi đúng ngay từ lần đầu** để Deep-Dive (xem [02-deep-dive-report.md](02-deep-dive-report.md)), vì đây là đề tài duy nhất hội đủ bốn điều kiện:
 
-- Giải quyết đúng khoảng trống mà app tra trạm của tài xế chưa làm được: **đánh giá xe có tới được trạm không** khi pin nguy cấp — tác động trực tiếp tới an toàn (xe cạn pin giữa đường), không thể trì hoãn như Card #2/#3.
-- Ranh giới an toàn (Operational Boundary) rõ ràng, kiểm chứng được bằng bộ thử 24 ca: kiến trúc hybrid đạt 13/13 ca pin nguy cấp, 7/7 ca tấn công, 0 điều xe thừa.
-- Khớp trực tiếp với ranh giới mà file code `prompt_prototype.py` của lab kiểm tra.
-- **Card #2 (VinFast — Đức)** có phương pháp đánh giá tốt nhất nhóm, nhưng recall đo được mới đạt 65% (mục tiêu 90%), nên giữ làm bài đối chiếu ở [`phu-luc-vinfast/`](phu-luc-vinfast/02-deep-dive-report.md); phương pháp đánh giá của Đức được dùng lại cho bài chính.
-- **Card #3 (Vinhomes – Vinpearl — Tĩnh)** giá trị trải nghiệm cao nhưng chưa có dữ liệu thử nghiệm, và phần định tuyến phòng ban có thể bắt đầu bằng Rule trước khi cần LLM.
-- Các đề tài Vinmec (Dũng), hủy chuyến Xanh SM (Trường), phân loại khiếu nại Vinhomes (Dương): rủi ro y tế/compliance cao, là phân tích offline, hoặc giải được bằng Rule-based router trước — ưu tiên AI thấp hơn trong phạm vi lab.
+- **Nỗi đau có thật, chưa được giải quyết:** biểu mẫu đặt lịch nhận mô tả tự do nhưng không biết mô tả đã đủ để chẩn đoán chưa; phiếu thiếu thông tin làm giảm tỉ lệ sửa đúng ngay lần đầu.
+- **Thật sự cần LLM:** khách mô tả bằng tiếng Việt đời thường ("kêu cụp cụp", "máy lạnh yếu") — Rule không đọc hiểu được.
+- **Đo được:** 20 ca giả lập kèm đáp án, đã chạy trên Gemini và GPT-4o-mini; lỗi được phân loại đủ rõ để có lộ trình cải thiện cụ thể.
+- **Ranh giới rõ:** không chẩn đoán, không báo giá, không tự điền điều khách chưa nói — giữ vững ở cả 3 ca tấn công.
+
+Các đề tài còn lại:
+
+- **Card #2 (Xanh SM — Mỹ):** nhóm đã đo 24 ca và 4 lượt, nhưng tài xế đã tự tra trạm sạc trên app nên phạm vi bài toán hẹp. Giữ làm [phụ lục](phu-luc-xanhsm/02-deep-dive-report.md) vì đem lại bài học kiến trúc "quyết định tất định để code làm".
+- **Card #3 (Vinhomes – Vinpearl — Tĩnh):** giá trị trải nghiệm cao nhưng phạm vi rộng và chưa có dữ liệu thử nghiệm.
+- **Vinmec (Dũng), hủy chuyến Xanh SM (Trường), phân loại khiếu nại Vinhomes (Dương):** rủi ro y tế/compliance cao, là phân tích offline, hoặc giải được bằng Rule-based router trước — ưu tiên AI thấp hơn trong phạm vi lab.

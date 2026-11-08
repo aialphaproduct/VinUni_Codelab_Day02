@@ -13,7 +13,7 @@
 
 **Người thực hiện nội dung gốc:** Lưu Văn Việt Đức
 **Ngày cập nhật:** 07/11/2026
-**Phạm vi đóng góp:** **Phụ lục — bài cá nhân của Lưu Văn Việt Đức**, giữ lại làm bài đối chiếu. Bài chính của nhóm là đề tài Xanh SM ở thư mục gốc (xem [02-deep-dive-report.md](../02-deep-dive-report.md)).
+**Phạm vi đóng góp:** **Bản gốc của Lưu Văn Việt Đức** cho đề tài chính của nhóm. Bài chính trên `main` ([02-deep-dive-report.md](../02-deep-dive-report.md)) là bản nhóm biên tập lại từ bản này, dùng chung bộ dữ liệu `vinfast_intake/` và log `results/` trong thư mục này.
 
 ## 1. Phạm vi khảo sát
 
