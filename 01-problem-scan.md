@@ -1,5 +1,16 @@
 # Lab 02 — Problem Scan & Quick Problem Cards (Vin Smart Future)
 
+**Tên nhóm:** Simple-Tech
+**Thành viên nhóm:**
+| # | Họ và tên | Email |
+|---|-----------|-------|
+| 1 | Lưu Thanh Mỹ (Trưởng nhóm) | data97688@gmail.com |
+| 2 | Lưu Văn Việt Đức | luuvanvietduc@gmail.com |
+| 3 | Nguyễn Công Tĩnh | tinh22102004@gmail.com |
+| 4 | Vũ Trí Dũng | dungvutri25@gmail.com |
+| 5 | Phạm Quang Trường | truongpham090325@gmail.com |
+| 6 | Khổng Tiến Dương | khongtienduongcv@gmail.com |
+
 > **Họ và tên / Branch:** Vũ Trí Dũng (`VuTriDung`)  
 > **Vai trò:** AI Product Engineer — **Vin Smart Future (Vingroup)**  
 > **Mảng khảo sát trọng tâm:** **Hệ thống Y tế Hàn lâm Vinmec**
