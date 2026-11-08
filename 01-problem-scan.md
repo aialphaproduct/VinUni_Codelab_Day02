@@ -7,7 +7,7 @@
 | 1 | Lưu Thanh Mỹ (Trưởng nhóm) | data97688@gmail.com |
 | 2 | Lưu Văn Việt Đức | luuvanvietduc@gmail.com |
 | 3 | Nguyễn Công Tĩnh | tinh22102004@gmail.com |
-| 4 | Vũ Trí Dũng | dungvutri25@gmail.com |
+| 4 | Vũ Trí Dũng | **Vinmec** | Tốn thời gian | Kiểm tra quyền lợi bảo hiểm (BHYT / bảo hiểm thương mại) và rà soát hồ sơ bảo lãnh viện phí trước khi thanh toán; hồ sơ thiếu giấy tờ khiến yêu cầu bảo lãnh bị trả về, bệnh nhân phải chờ. Deep-dive cá nhân: *Vinmec Prior-Auth & Eligibility Co-Pilot*. |
 | 5 | Phạm Quang Trường | truongpham090325@gmail.com |
 | 6 | Khổng Tiến Dương | khongtienduongcv@gmail.com |
 
