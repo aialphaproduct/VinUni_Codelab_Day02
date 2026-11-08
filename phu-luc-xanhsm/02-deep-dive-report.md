@@ -181,7 +181,7 @@ Log từng lượt: [`results/xanhsm/`](results/xanhsm/) (mỗi lượt có `sum
 2. So sánh đề xuất của AI với quyết định thật của điều phối viên trên **≥ 200 sự cố**, đồng thời đo baseline thời gian.
 3. Chỉ chuyển sang dùng thật khi recall an toàn = 100% và điều xe thừa ≤ 5% trên dữ liệu thật, có điều phối viên đồng ý.
 
-**So với bài đối chiếu VinFast (NOT YET):** bài VinFast đo được recall 65% trên GPT, chưa đạt ngưỡng 90%, và chưa có kiến trúc khắc phục; bài Xanh SM đã đạt các ngưỡng an toàn trên bộ thử nhờ kiến trúc hybrid. Hai quyết định khác nhau vì **bằng chứng khác nhau**, cùng một tiêu chí.
+**So với đề tài VinFast — bài chính của nhóm (NOT YET):** bài VinFast đo được recall 65% trên GPT, chưa đạt ngưỡng 90%, nên nhóm chọn NOT YET kèm lộ trình 3 bước, trong đó bước đầu tiên chính là áp dụng bài học của thử nghiệm này (luật code cho phần tất định). Bài Xanh SM đạt các ngưỡng an toàn trên bộ thử nhờ kiến trúc hybrid. Hai quyết định khác nhau vì **bằng chứng khác nhau**, cùng một tiêu chí.
 
 ## 6. Q&A dự kiến khi thuyết trình
 
@@ -198,5 +198,5 @@ Log từng lượt: [`results/xanhsm/`](results/xanhsm/) (mỗi lượt có `sum
 - Bộ ca và đáp án: [`xanhsm_cases/`](xanhsm_cases/inputs.json)
 - Log 4 lượt chạy: [`results/xanhsm/`](results/xanhsm/)
 - Code nộp bài và script đo: branch [`luuthanhmy`](https://github.com/aialphaproduct/VinUni_Codelab_Day02/tree/luuthanhmy) — `starter-code/prompt_prototype.py`, `tools/xanhsm_eval.py`
-- Bài đối chiếu VinFast (Lưu Văn Việt Đức): [`phu-luc-vinfast/`](../phu-luc-vinfast/02-deep-dive-report.md)
+- Bài chính của nhóm — VinFast (Lưu Văn Việt Đức), bản gốc và dữ liệu: [`phu-luc-vinfast/`](../phu-luc-vinfast/02-deep-dive-report.md)
 - Nhật ký dùng AI: [03-ai-log.md](../03-ai-log.md)
