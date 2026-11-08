@@ -22,38 +22,26 @@ Nhóm đóng vai trò **AI Product Engineer** tại **Vin Smart Future** (đơn 
 
 ---
 
-## 🔍 Phase 1 — SCAN (4 Lenses)
+## 🔍 Phase 1 — SCAN (4 Lenses) — đề tài thật của 6 thành viên
 
-| # | Subsidiary | Lens | Mô tả ngắn bài toán |
-|---|------------|------|----------------------|
-| 1 | **Xanh SM (GSM)** | Lặp lại | Khi tài xế báo hết pin giữa đường, điều phối viên phải thủ công tra cứu vị trí GPS, tìm trạm sạc VinFast còn trụ trống phù hợp loại cổng sạc, rồi soạn tin nhắn chỉ dẫn — lặp lại hàng chục lần mỗi ca trực. |
-| 2 | **VinFast** | Lặp lại | Đối chiếu hóa đơn sạc điện hằng tuần từ hàng nghìn trụ sạc đối tác ngoài hệ thống với số liệu ghi nhận nội bộ, hiện làm thủ công trên Excel. |
-| 3 | **Vinhomes** | AI có thể tốt hơn | Khiếu nại cư dân gửi qua App Vinhomes Resident (mất nước, hỏng thang máy, tiếng ồn...) đang được nhân viên tổng đài đọc và phân loại thủ công rồi mới chuyển đúng ban quản lý tòa nhà, phản hồi rập khuôn và chậm. |
-| 4 | **Vinmec** | Pain từ người khác | Bác sĩ phàn nàn mất 20-30 phút/bệnh nhân để soạn tóm tắt hồ sơ xuất viện từ bệnh án điện tử, xét nghiệm và ghi chú lâm sàng. |
-| 5 | **Xanh SM (GSM)** | Pain từ người khác | Điều phối viên phải nghe lại ghi âm cuộc gọi hủy chuyến và đọc ghi chú tài xế thủ công để tổng hợp nguyên nhân hủy chuyến phổ biến, dùng để báo cáo tuần cho vận hành. |
+Mỗi thành viên tự scan và chọn một đề tài trên branch cá nhân; bảng dưới tổng hợp đề tài chính của từng người.
 
-> **Ghi chú:** Sau khi thảo luận nhóm, cả nhóm thống nhất chọn bài toán **#1 — Xanh SM xử lý sự cố pin thực địa** để Deep-Dive, vì đây là tác vụ vận hành thời gian thực (real-time), ảnh hưởng trực tiếp đến an toàn tài xế và hiệu suất đội xe, đồng thời khớp với bài tập lập trình Prompt Prototype (Phase 4) của Lab.
-
----
-
-## 👥 Scan của cả nhóm (đề tài cá nhân từng thành viên)
-
-| Thành viên | Subsidiary | Đề tài cá nhân | Lens |
-|---|---|---|---|
-| Lưu Thanh Mỹ | Xanh SM | Co-pilot xử lý sự cố hết pin thực địa | Lặp lại / Stakeholder pain |
-| Lưu Văn Việt Đức | VinFast | Chuẩn hóa mô tả sửa chữa thành phiếu tiếp nhận ([phụ lục](https://github.com/aialphaproduct/VinUni_Codelab_Day02/blob/main/phu-luc-vinfast/01-problem-scan.md)) | Stakeholder pain |
-| Nguyễn Công Tĩnh | Vinhomes – Vinpearl | Tiếp nhận yêu cầu cư dân/chủ sở hữu BĐS nghỉ dưỡng qua một đầu mối | AI-upgrade |
-| Vũ Trí Dũng | Vinmec | Đối chiếu hồ sơ bảo hiểm y tế; đối soát viện phí, mã dịch vụ, hóa đơn | Tốn thời gian / Lặp lại |
-| Phạm Quang Trường | Xanh SM | Phân tích lý do hủy chuyến từ ghi âm + ghi chú tài xế | Stakeholder pain |
-| Khổng Tiến Dương | Vinhomes | Phân loại & điều hướng khiếu nại cư dân | Lặp lại |
+| # | Người đề xuất | Subsidiary | Lens | Mô tả ngắn bài toán |
+|---|---|---|---|---|
+| 1 | Lưu Thanh Mỹ | **Xanh SM (GSM)** | Lặp lại | Tài xế báo hết pin giữa đường; điều phối viên phải tra GPS, tìm trạm sạc còn trụ trống và **chọn giữa chỉ đường hay điều xe sạc di động theo mức pin**, rồi soạn tin hướng dẫn — lặp lại nhiều lần mỗi ca trực. |
+| 2 | Lưu Văn Việt Đức | **VinFast — Dịch vụ hậu mãi** | Pain từ người khác | Khách mô tả hiện tượng của xe ngắn và thiếu thông tin (*"điều hòa không mát"*); cố vấn dịch vụ phải tự phát hiện mục còn thiếu (thời điểm, tần suất, điều kiện) và hỏi lại trước khi lập phiếu tiếp nhận. |
+| 3 | Nguyễn Công Tĩnh | **Vinhomes – Vinpearl** | Pain từ người khác | Cư dân và chủ sở hữu BĐS nghỉ dưỡng phải liên hệ nhiều đầu mối (phí dịch vụ, pháp lý, vận hành, nghỉ dưỡng) mà không có một đầu mối chung; yêu cầu bị chuyển qua lại và phải trình bày lại nhiều lần. |
+| 4 | Vũ Trí Dũng | **Vinmec** | Tốn thời gian | Kiểm tra, đối chiếu hồ sơ bảo hiểm y tế và xử lý yêu cầu bổ sung giấy tờ trước khi thanh toán; đối soát viện phí, mã dịch vụ và hóa đơn với hồ sơ điều trị. |
+| 5 | Phạm Quang Trường | **Xanh SM (GSM)** | Tốn thời gian | Điều phối viên phải nghe lại ghi âm cuộc gọi hủy chuyến và đọc ghi chú tài xế để tổng hợp nguyên nhân hủy chuyến phổ biến, tìm pattern lỗi hệ thống. |
+| 6 | Khổng Tiến Dương | **Vinhomes** | Lặp lại | Mỗi ngày ban quản lý nhận hàng trăm phản ánh cư dân qua App Vinhomes Resident (mất nước, hỏng đèn, thang máy, tiếng ồn…) và phải phân loại, điều hướng thủ công tới đúng bộ phận. |
 
 ---
 
 ## 🃏 Phase 2 — QUICK-ASSESS: 3 Quick Problem Cards
 
-> Số phút/lượt trong các card là **ước lượng ban đầu, chưa đo**. Riêng Card #1 đã có số liệu đo trên bộ thử 24 ca (xem [02-deep-dive-report.md](02-deep-dive-report.md), mục 4).
+> Số phút/lượt trong các card là **ước lượng ban đầu, chưa đo**. Card #2 và #3 lấy từ bài cá nhân của Đức và Tĩnh. Riêng Card #1 đã có số liệu đo trên bộ thử 24 ca (xem [02-deep-dive-report.md](02-deep-dive-report.md), mục 4).
 
-### Quick Problem Card #1 — Xanh SM: Xử lý sự cố hết pin thực địa ⭐ (Được chọn cho Deep-Dive)
+### Quick Problem Card #1 — Xanh SM: Xử lý sự cố hết pin thực địa ⭐ (Được chọn cho Deep-Dive) *(đề xuất: Lưu Thanh Mỹ)*
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -85,62 +73,69 @@ Nhóm đóng vai trò **AI Product Engineer** tại **Vin Smart Future** (đơn 
 └─────────────────────────────────────────────────────────────┘
 ```
 
-### Quick Problem Card #2 — Vinhomes: Phân loại & điều hướng phản ánh cư dân
+### Quick Problem Card #2 — VinFast: Phát hiện thông tin còn thiếu trong mô tả sửa chữa *(đề xuất: Lưu Văn Việt Đức)*
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│ QUICK PROBLEM CARD #2                                        │
-│                                                                │
-│ Bài toán: Khiếu nại/phản ánh cư dân gửi qua App Vinhomes      │
-│ Resident cần được phân loại đúng hạng mục và chuyển đúng ban  │
-│ quản lý tòa nhà phụ trách.                                    │
-│ Công ty thành viên: [x] Vinhomes                              │
-│                                                                │
-│ Ai đang đau (Actor)? Nhân viên tổng đài CSKH Vinhomes.        │
-│                                                                │
-│ Workflow thủ công hiện tại (4 bước):                          │
-│   1. Đọc nội dung phản ánh ──> 2. Tra cứu tòa nhà/căn hộ ──>  │
-│   3. Phân loại hạng mục (điện/nước/an ninh...) ──>            │
-│   4. Chuyển ticket cho đúng ban quản lý                       │
-│                                                                │
-│ Bước nào tốn thời gian/lỗi nhất? Bước 3 (phân loại sai hạng   │
-│ mục dẫn đến chuyển nhầm ban, phải làm lại) (⏱ ~8 phút/lượt)   │
-│ AI có thể nhảy vào hỗ trợ ở bước nào? Bước 2-3                │
-│                                                                │
-│ Đo thành công bằng gì (Metric có số)?                         │
-│ Giảm thời gian phân loại + chuyển ticket từ 12 phút ──>       │
-│ dưới 2 phút; độ chính xác phân loại ≥ 95%.                    │
-│                                                                │
-│ Quick Architecture: [x] Rule + LLM Feature (hybrid)            │
+│ QUICK PROBLEM CARD #2                                       │
+│                                                             │
+│ Bài toán: Mô tả của khách chưa đủ thông tin, cố vấn dịch vụ │
+│ phải xác định nội dung còn thiếu và hỏi bổ sung trước khi   │
+│ hoàn thiện phiếu tiếp nhận.                                 │
+│ Công ty thành viên: [x] VinFast — Dịch vụ hậu mãi           │
+│                                                             │
+│ Ai đang đau (Actor)? Cố vấn dịch vụ; khách hàng phải trả    │
+│ lời nhiều lượt.                                             │
+│                                                             │
+│ Workflow hiện tại (cần xác minh):                           │
+│   1. Khách gửi mô tả ──> 2. Cố vấn đọc, kiểm tra ──>        │
+│   3. Xác định thông tin thiếu ──> 4. Hỏi khách, ghi nhận ──>│
+│   5. Hoàn thiện phiếu tiếp nhận                             │
+│                                                             │
+│ Bước nào tốn thời gian/lỗi nhất? Bước 3–4 (chưa đo)         │
+│ AI hỗ trợ ở bước nào? Đối chiếu mô tả với checklist, liệt kê│
+│ mục thiếu và đề xuất câu hỏi, không hỏi lại điều đã có.     │
+│                                                             │
+│ Metric: trên ≥ 20 ca giả lập, phát hiện đúng ≥ 90% mục thiếu│
+│ (đã đo trên GPT-4o-mini: 65% — chưa đạt, xem phụ lục).      │
+│                                                             │
+│ Quick Architecture: [x] Rule + LLM + Human Review            │
+│ Boundary: không tự điền, không chẩn đoán nguyên nhân hỏng.  │
 └─────────────────────────────────────────────────────────────┘
 ```
 
-### Quick Problem Card #3 — Vinmec: Soạn tóm tắt hồ sơ xuất viện
+### Quick Problem Card #3 — Vinhomes – Vinpearl: Một đầu mối hỗ trợ cư dân/chủ sở hữu BĐS *(đề xuất: Nguyễn Công Tĩnh)*
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│ QUICK PROBLEM CARD #3                                        │
-│                                                                │
-│ Bài toán: Bác sĩ phải tự soạn bản tóm tắt xuất viện bằng tay  │
-│ từ bệnh án điện tử, kết quả xét nghiệm và ghi chú lâm sàng.   │
-│ Công ty thành viên: [x] Vinmec                                │
-│                                                                │
-│ Ai đang đau (Actor)? Bác sĩ điều trị / Điều dưỡng trưởng khoa.│
-│                                                                │
-│ Workflow thủ công hiện tại (4 bước):                          │
-│   1. Mở bệnh án điện tử ──> 2. Đọc xét nghiệm + ghi chú ──>   │
-│   3. Soạn bản tóm tắt bằng ngôn ngữ dễ hiểu ──>               │
-│   4. Bác sĩ trưởng khoa duyệt trước khi phát cho bệnh nhân    │
-│                                                                │
-│ Bước nào tốn thời gian/lỗi nhất? Bước 3 (⏱ 20-30 phút/ca)     │
-│ AI có thể nhảy vào hỗ trợ ở bước nào? Bước 3 (draft bản tóm   │
-│ tắt, bác sĩ chỉ cần rà soát & ký duyệt)                        │
-│                                                                │
-│ Đo thành công bằng gì (Metric có số)?                         │
-│ Giảm thời gian soạn thảo từ 25 phút ──> dưới 8 phút/ca, vẫn   │
-│ giữ nguyên bước bác sĩ duyệt 100% trước khi phát hành.        │
-│                                                                │
-│ Quick Architecture: [x] LLM Feature (bắt buộc HITL do y tế)    │
+│ QUICK PROBLEM CARD #3                                       │
+│                                                             │
+│ Bài toán: Cư dân và chủ sở hữu BĐS nghỉ dưỡng phải liên hệ  │
+│ nhiều phòng ban Vinhomes/Vinpearl (phí dịch vụ, pháp lý,    │
+│ vận hành, nghỉ dưỡng) mà không có đầu mối chung.            │
+│ Công ty thành viên: [x] Vinhomes  [x] Vinpearl              │
+│                                                             │
+│ Ai đang đau (Actor)? Cư dân/chủ sở hữu (trình bày lại nhiều │
+│ lần), CSKH (thiếu lịch sử yêu cầu), ban quản lý (chuyển     │
+│ tiếp nhiều lần).                                            │
+│                                                             │
+│ Workflow thủ công hiện tại (5 bước):                        │
+│   1. Phát sinh nhu cầu ──> 2. Tự tìm kênh liên hệ ──>       │
+│   3. Trình bày với bộ phận đầu tiên ──> 4. Bị chuyển phòng  │
+│   ban, kể lại từ đầu ──> 5. Liên hệ lại để hỏi tiến độ      │
+│                                                             │
+│ Bước nào tốn thời gian/lỗi nhất? Bước 2–4: xác định đầu mối,│
+│ phân loại và chuyển tiếp yêu cầu.                           │
+│ AI hỗ trợ ở bước nào? Tiếp nhận qua một đầu mối, phân loại, │
+│ đề xuất phòng ban phụ trách, lưu lịch sử trao đổi.          │
+│                                                             │
+│ Metric: phân loại & điều hướng đúng ≥ 90% trên 100 yêu cầu  │
+│ thử; giảm ≥ 50% số lần phải cung cấp lại thông tin; 100%    │
+│ yêu cầu có mã tiếp nhận và trạng thái theo dõi.             │
+│                                                             │
+│ Quick Architecture: [x] LLM (+ HITL cho quyết định quan     │
+│ trọng). Boundary: không phê duyệt pháp lý, không quyết định │
+│ phí dịch vụ, không cam kết quyền lợi.                       │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -150,8 +145,9 @@ Nhóm đóng vai trò **AI Product Engineer** tại **Vin Smart Future** (đơn 
 
 Nhóm chọn **Card #1 — Xanh SM: Xử lý sự cố hết pin thực địa** để Deep-Dive (xem chi tiết tại [02-deep-dive-report.md](02-deep-dive-report.md)), vì:
 
-- Tác động trực tiếp đến an toàn vận hành thời gian thực, không thể trì hoãn xử lý như Card #2/#3.
+- Tác động trực tiếp đến an toàn vận hành thời gian thực (xe cạn pin giữa đường), không thể trì hoãn như Card #2/#3.
 - Ranh giới an toàn (Operational Boundary) rõ ràng, kiểm chứng được bằng bộ thử 24 ca: kiến trúc hybrid đạt 13/13 ca pin nguy cấp, 7/7 ca tấn công, 0 điều xe thừa.
 - Khớp trực tiếp với ranh giới mà file code `prompt_prototype.py` của lab kiểm tra.
-- Card #3 (Vinmec) tuy giá trị cao nhưng rủi ro y tế đòi hỏi quy trình compliance phức tạp hơn nhiều, cần một lab riêng để xử lý đúng mức.
-- Card #2 (Vinhomes) có thể giải quyết tốt bằng rule-based router đơn giản trước khi cần đến LLM, độ ưu tiên AI thấp hơn.
+- **Card #2 (VinFast — Đức)** có phương pháp đánh giá tốt nhất nhóm, nhưng recall đo được mới đạt 65% (mục tiêu 90%), nên giữ làm bài đối chiếu ở [`phu-luc-vinfast/`](https://github.com/aialphaproduct/VinUni_Codelab_Day02/blob/main/phu-luc-vinfast/02-deep-dive-report.md); phương pháp đánh giá của Đức được dùng lại cho bài chính.
+- **Card #3 (Vinhomes – Vinpearl — Tĩnh)** giá trị trải nghiệm cao nhưng chưa có dữ liệu thử nghiệm, và phần định tuyến phòng ban có thể bắt đầu bằng Rule trước khi cần LLM.
+- Các đề tài Vinmec (Dũng), hủy chuyến Xanh SM (Trường), phân loại khiếu nại Vinhomes (Dương): rủi ro y tế/compliance cao, là phân tích offline, hoặc giải được bằng Rule-based router trước — ưu tiên AI thấp hơn trong phạm vi lab.
