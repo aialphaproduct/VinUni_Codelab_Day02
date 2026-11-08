@@ -1,5 +1,16 @@
 # 02-deep-dive-report.md — Báo cáo Phân tích sâu (Vin Smart Future)
 
+**Tên nhóm:** Simple-Tech
+**Thành viên nhóm:**
+| # | Họ và tên | Email |
+|---|-----------|-------|
+| 1 | Lưu Thanh Mỹ (Trưởng nhóm) | data97688@gmail.com |
+| 2 | Lưu Văn Việt Đức | luuvanvietduc@gmail.com |
+| 3 | Nguyễn Công Tĩnh | tinh22102004@gmail.com |
+| 4 | Vũ Trí Dũng | dungvutri25@gmail.com |
+| 5 | Phạm Quang Trường | truongpham090325@gmail.com |
+| 6 | Khổng Tiến Dương | khongtienduongcv@gmail.com |
+
 > **Học viên:** Khổng Tiến Dương · **Branch cá nhân:** khongtienduong · **Lab 02: AI Product Scoping**
 >
 > Tài liệu này gồm **Phase 3 (DEEP-DIVE)** và **Phase 5 (EVALUATE)** — chấm theo 4 Gate nhóm **G1–G4 (40 điểm)** trong `01-worksheet.md`.

@@ -1,5 +1,16 @@
 # 01-problem-scan.md — Ý tưởng cá nhân & Nhóm (Vin Smart Future)
 
+**Tên nhóm:** Simple-Tech
+**Thành viên nhóm:**
+| # | Họ và tên | Email |
+|---|-----------|-------|
+| 1 | Lưu Thanh Mỹ (Trưởng nhóm) | data97688@gmail.com |
+| 2 | Lưu Văn Việt Đức | luuvanvietduc@gmail.com |
+| 3 | Nguyễn Công Tĩnh | tinh22102004@gmail.com |
+| 4 | Vũ Trí Dũng | dungvutri25@gmail.com |
+| 5 | Phạm Quang Trường | truongpham090325@gmail.com |
+| 6 | Khổng Tiến Dương | khongtienduongcv@gmail.com |
+
 > **Học viên:** Khổng Tiến Dương · **Branch cá nhân:**khongtienduong  · **Lab 02: AI Product Scoping**
 >
 > Tài liệu này gồm **Phase 1 (SCAN)** và **Phase 2 (QUICK-ASSESS)** — 2 nội dung cá nhân bắt buộc, chấm theo Gate **I1. Scan & Cards (15 điểm)** trong `01-worksheet.md`.
