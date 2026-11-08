@@ -60,7 +60,7 @@ Nhóm cũng đã thử nâng cấp đề tài Xanh SM (xử lý sự cố pin) b
 | **Lưu Văn Việt Đức** | **VinFast — tiếp nhận dịch vụ** (`vietduc`) | **Tác giả đề tài chính:** scan, Quick Cards, deep-dive, bộ dữ liệu 20 ca + đáp án, prototype và log Gemini |
 | Lưu Thanh Mỹ (Trưởng nhóm) | Xanh SM — sự cố pin (`luuthanhmy`) | Tạo repo, rà soát 6 branch, tổng hợp `main`; thử nghiệm Xanh SM (phụ lục) cho bài học Rule + LLM |
 | Nguyễn Công Tĩnh | Vinhomes – Vinpearl — một đầu mối hỗ trợ (`nguyencongtinh`) | Quick Card #3; góc nhìn trải nghiệm khách hàng "một cửa" |
-| Vũ Trí Dũng | Vinmec — hồ sơ bảo hiểm, đối soát viện phí (`VuTriDung`) | Góp mảng y tế vào bảng Scan chung |
+| Vũ Trí Dũng | Vinmec — Prior-Auth & Eligibility Co-Pilot: kiểm tra quyền lợi và hồ sơ bảo lãnh viện phí (`VuTriDung`) | Góp mảng y tế vào bảng Scan chung; minh họa ranh giới nghiêm ngặt nhất: AI không được sửa hay suy diễn chẩn đoán để khớp điều khoản bảo hiểm |
 | Phạm Quang Trường | Xanh SM — lý do hủy chuyến (`PhamQuangTruong`) | Góp bài toán phân tích offline vào bảng Scan chung |
 | Khổng Tiến Dương | Vinhomes — phân loại khiếu nại (`khongtienduong`) | Góp ví dụ bài toán Rule-based router có thể đủ tốt |
 
