@@ -6,6 +6,16 @@
 **Ngày cập nhật:** 07/11/2026  
 **Phạm vi đóng góp:** Bài làm cá nhân của Lưu Văn Việt Đức; chưa thay thế báo cáo tổng hợp của nhóm.
 
+**Thành viên nhóm:**
+| # | Họ và tên | Email |
+|---|-----------|-------|
+| 1 | Lưu Thanh Mỹ (Trưởng nhóm) | data97688@gmail.com |
+| 2 | Lưu Văn Việt Đức | luuvanvietduc@gmail.com |
+| 3 | Nguyễn Công Tĩnh | tinh22102004@gmail.com |
+| 4 | Vũ Trí Dũng | dungvutri25@gmail.com |
+| 5 | Phạm Quang Trường | truongpham090325@gmail.com |
+| 6 | Khổng Tiến Dương | khongtienduongcv@gmail.com |
+
 ## 1. Phạm vi khảo sát
 
 VinFast — Quy trình tiếp nhận nhu cầu sửa chữa xe.

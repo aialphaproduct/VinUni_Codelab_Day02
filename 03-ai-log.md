@@ -7,6 +7,16 @@
 **Đề tài:** VinFast — Chuẩn hóa mô tả nhu cầu sửa chữa thành phiếu tiếp nhận dịch vụ.  
 **Phạm vi đóng góp:** Nhật ký và phản tư cá nhân; chỉ ghi các hoạt động đã thực hiện trong quá trình làm bài.
 
+**Thành viên nhóm:**
+| # | Họ và tên | Email |
+|---|-----------|-------|
+| 1 | Lưu Thanh Mỹ (Trưởng nhóm) | data97688@gmail.com |
+| 2 | Lưu Văn Việt Đức | luuvanvietduc@gmail.com |
+| 3 | Nguyễn Công Tĩnh | tinh22102004@gmail.com |
+| 4 | Vũ Trí Dũng | dungvutri25@gmail.com |
+| 5 | Phạm Quang Trường | truongpham090325@gmail.com |
+| 6 | Khổng Tiến Dương | khongtienduongcv@gmail.com |
+
 ## 1. Tôi sử dụng AI để làm gì?
 
 Tôi dùng ChatGPT làm người cùng thảo luận: đọc yêu cầu lab, phản biện phạm vi, hỗ trợ xây dựng workflow, thiết kế thử nghiệm, hỗ trợ viết code và tổng hợp tài liệu. Tôi dùng Gemini API làm mô hình thực thi trong prompt prototype. Hai vai trò này được phân biệt: đề xuất của ChatGPT không phải kết quả kiểm thử của Gemini.
