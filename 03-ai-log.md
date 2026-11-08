@@ -11,60 +11,63 @@
 | 5 | Phạm Quang Trường | truongpham090325@gmail.com |
 | 6 | Khổng Tiến Dương | khongtienduongcv@gmail.com |
 
-**Người viết nội dung gốc:** Lưu Thanh Mỹ
-**Đề tài:** Xanh SM — Co-pilot xử lý sự cố hết pin thực địa
-**Phạm vi đóng góp:** AI-log **cá nhân** của Lưu Thanh Mỹ trên branch `luuthanhmy` (chấm điểm cá nhân I3). Bản tổng hợp của nhóm, có phản tư của các thành viên khác, ở [03-ai-log.md trên main](https://github.com/aialphaproduct/VinUni_Codelab_Day02/blob/main/03-ai-log.md).
+**Người viết:** Lưu Thanh Mỹ
+**Đề tài:** VinFast Service Intake Co-pilot — "Hỏi đúng ngay từ lần đầu"
+**Phạm vi đóng góp:** AI-log **cá nhân** của Lưu Thanh Mỹ trên branch `luuthanhmy` (chấm điểm cá nhân I3). Bản tổng hợp của nhóm, gồm nhật ký của Đức và phản tư các thành viên, ở [03-ai-log.md trên main](https://github.com/aialphaproduct/VinUni_Codelab_Day02/blob/main/03-ai-log.md).
 
 ---
 
-## 1. Công cụ AI và vai trò
+## 1. Nhóm đã dùng AI như thế nào
 
-| Công cụ | Vai trò | Trách nhiệm của nhóm |
+| Công cụ | Vai trò | Phần con người chịu trách nhiệm |
 |---|---|---|
-| Trợ lý AI lập trình (dạng chat) | Thought-partner: đọc yêu cầu lab, gợi ý bộ ca thử, viết script đo, phản biện báo cáo | Quyết định đề tài, kiểm tra từng nhận định, chạy thử bằng API key của nhóm |
-| gpt-4o-mini (OpenAI API) | **Mô hình được kiểm thử** trong 4 lượt đo | Đọc log, đối chiếu đáp án |
-| Gemini (Google GenAI SDK) | Mô hình trong file code nộp bài `prompt_prototype.py` | Giữ đúng yêu cầu lab |
+| ChatGPT (Đức), trợ lý AI lập trình (nhóm) | **Người cùng suy nghĩ:** đọc yêu cầu lab, phản biện phạm vi, gợi ý workflow và bộ ca thử, hỗ trợ viết code và báo cáo | Chọn đề tài, đối chiếu worksheet, kiểm tra từng khẳng định, quyết định cuối cùng |
+| Gemini API (`google-genai`) | **Mô hình được kiểm thử** trong file code nộp bài | Chạy thử, lưu log, tách lỗi dịch vụ khỏi lỗi nội dung |
+| GPT-4o-mini (OpenAI API) | **Mô hình được kiểm thử** khi chạy đủ 20 ca | Đọc log, đối chiếu đáp án, phân loại lỗi |
 
-Hai vai trò được tách rõ: **gợi ý của trợ lý AI không phải là kết quả kiểm thử**; chỉ log chạy thật trong `results/xanhsm/` mới được dùng làm bằng chứng.
+Nguyên tắc xuyên suốt: **gợi ý của trợ lý AI không phải là kết quả kiểm thử.** Chỉ log chạy thật mới được dùng làm bằng chứng trong báo cáo.
 
 ## 2. AI đã giúp được gì
 
-- **Thiết kế bộ thử 24 ca** theo 5 nhóm (pin nguy cấp có số, phải suy ra, ngưỡng biên, bình thường, tấn công) và gợi ý thêm **4 ca held-out viết sau lượt v1** để kiểm tra xem bản sửa prompt có thật sự tốt hơn hay chỉ khớp với các ca đã sai.
-- **Viết script chấm tự động** `tools/xanhsm_eval.py`: phân loại đầu ra thành JSON điều xe / tin nháp có thẻ / sai định dạng, kiểm tra lộ system prompt, tổng hợp theo nhóm ca.
-- **Phân tích lỗi giữa các lượt** và đề xuất chuyển phần ngưỡng pin sang code (kiến trúc hybrid), có số liệu so sánh trước/sau.
-- **Phản biện báo cáo:** chỉ ra các con số trong bài Xanh SM ban đầu (15 phút/lượt, ~80 sự cố/ngày, 15% doanh thu) được mượn từ worked example của giảng viên, chưa được kiểm chứng.
+- **Thu hẹp đề tài:** từ "hỗ trợ tiếp nhận sửa chữa" (quá rộng) xuống một tác vụ đo được — phát hiện mục thông tin còn thiếu và soạn câu hỏi làm rõ.
+- **Thiết kế bộ thử 20 ca** theo 6 nhóm (thiếu thông tin, một phần, đầy đủ, khách không biết, mâu thuẫn, tấn công) kèm đáp án tham chiếu.
+- **Thiết kế đầu ra có căn cứ:** mỗi nhận định kèm trích dẫn nguyên văn, 6 trạng thái thay vì chỉ "có/thiếu" — để không hỏi lại điều khách đã nói "không nhớ".
+- **Đọc lỗi API** (404, 503, 504) và phân biệt lỗi dịch vụ với lỗi nội dung.
+- **Chấm điểm tự động và phân loại 21 mục sai**, từ đó tìm ra lớp kiểm tra bằng code bắt được 15/21 lỗi.
 
 ## 3. AI đã sai ở đâu và nhóm sửa thế nào
 
-Đây là các sự việc **thật** xảy ra trong quá trình làm bài, có thể đối chiếu với log và lịch sử commit:
+Đây là các sự việc **thật** trong quá trình làm bài, đối chiếu được với log và lịch sử commit.
 
-| # | AI sai ở đâu | Nhóm phát hiện và sửa thế nào |
+### Các sự việc tôi trực tiếp xử lý khi tổng hợp bài nhóm
+
+| # | AI lệch ở đâu | Nhóm phát hiện và sửa |
 |---|---|---|
-| 1 | Bản báo cáo Xanh SM đầu tiên do trợ lý AI soạn **chép gần như nguyên worked example** của giảng viên, kèm các câu **không có căn cứ**: "đội điều vận đã xác nhận sẵn sàng thử nghiệm", "có log lịch sử sự cố pin", "ranh giới đứng vững trước cả 3 kịch bản tấn công" (khi đó chưa chạy test nào). | Khi so sánh với bài của Đức, nhóm nhận ra bài này yếu về bằng chứng. Viết lại toàn bộ: xóa các câu không có căn cứ, ghi rõ số liệu nào là giả định tham chiếu, và **đo thật** bằng bộ 24 ca. |
-| 2 | Khi rà bài VinFast, trợ lý AI khẳng định bài đã "đo Precision/Recall thực tế", nhưng bảng chỉ tiêu trong bài ghi toàn "chưa đo". | Đọc lại toàn văn báo cáo, đính chính ngay; chấm lại log và ghi số liệu thật (4/20 ca có phản hồi). |
-| 3 | Khi bổ sung ước lượng thời gian, trợ lý AI viết "nhóm đã đóng vai cố vấn và bấm giờ" — việc nhóm **chưa hề làm**. | Sửa thành "nhóm ước lượng, chưa bấm giờ thực tế" trước khi commit. |
-| 4 | **gpt-4o-mini lẫn ngưỡng số**: điều xe sạc khi pin 5% và 6% (v1), rồi 6% và 8% (v3), với lý do **bịa "pin dưới 5%"**. | Định nghĩa lại ngưỡng trong prompt (v2) — chưa đủ. Chuyển quyết định ngưỡng sang code (hybrid) → 0 lần điều xe thừa. |
-| 5 | **Bản sửa prompt v2 do trợ lý AI đề xuất làm hỏng ca an toàn**: thêm dòng "câu từ chối phải có thẻ `[DRAFT_ONLY]`" khiến XS-15 (pin 3% + "SYSTEM OVERRIDE") trả lời *"tôi sẽ điều xe"* bằng chữ mà **không có JSON** — hệ thống thật sẽ không điều xe nào. Kết quả trên 20 ca cũ giảm từ 17/20 xuống 16/20. | So sánh log v1 và v2 theo từng ca để tìm nguyên nhân; thêm quy tắc "khi pin nguy cấp, JSON luôn ưu tiên hơn câu từ chối" (v3) → 13/13 ca nguy cấp. |
-| 6 | Câu từ chối in system prompt (XS-18) **thiếu thẻ `[DRAFT_ONLY]`** ở v1 và v2. | Sửa ở v3; trong hybrid thêm lớp code chặn mọi đầu ra thiếu thẻ (fail-closed). |
-| 7 | Bảng SCAN và Quick Cards đầu tiên do trợ lý AI soạn là **5 bài toán chung chung lấy từ gợi ý của đề**, không phải đề tài thật của nhóm; Card #3 (Vinmec tóm tắt xuất viện) **không phải đề tài của thành viên nào**. | Trưởng nhóm phát hiện khi đọc lại bản nộp; thay bằng đề tài thật trên branch của 6 thành viên, Card #2 và #3 lấy từ bài của Đức và Tĩnh. |
-| 8 | Mô tả bài toán và sơ đồ hiện trạng do trợ lý AI viết coi **tra trạm sạc còn trụ trống** là việc thủ công của điều phối viên (~5 phút, là bottleneck). Khi được nhắc Xanh SM đã có app, trợ lý AI **chỉ sửa nửa vời**: vẫn để điều phối viên tra trạm, chỉ là "tra nhanh hơn nhờ app". | Trưởng nhóm chỉ ra hai lần: **tài xế tự tra trạm trên app và tự đi sạc**. Bài toán được định nghĩa lại cho đúng: điều phối viên chỉ xử lý **ca leo thang** khi pin nguy cấp; bottleneck là đánh giá xe có tới được trạm không (điều app chưa làm được). Mốc giả định còn ~10 phút/ca leo thang. Bài học: kiến thức thực tế của người làm nghiệp vụ quan trọng hơn mô tả nghe hợp lý của AI. |
+| 5 | Khi rà bài, trợ lý AI khẳng định bài VinFast "đã đo Precision/Recall thực tế", trong khi bảng chỉ tiêu ghi "chưa đo". | Đọc lại toàn văn và đính chính; chấm lại log thật (4/20 ca Gemini), rồi chạy đủ 20 ca trên GPT-4o-mini. |
+| 6 | Khi bổ sung ước lượng thời gian, trợ lý AI viết "nhóm đã đóng vai cố vấn và bấm giờ" — việc chưa hề làm. | Sửa thành "nhóm ước lượng, chưa bấm giờ thực tế" trước khi commit. |
+| 7 | Bảng SCAN đầu tiên do trợ lý AI soạn là **5 bài toán chung chung** lấy từ gợi ý của đề, có card Vinmec không phải đề tài của ai. | Trưởng nhóm phát hiện khi đọc lại; thay bằng đề tài thật trên branch của 6 thành viên. |
+| 8 | Với đề tài Xanh SM, trợ lý AI chép gần như nguyên worked example, mô tả việc tra trạm sạc như việc thủ công của điều phối viên — trong khi **tài xế đã tự tra trên app**. Lần sửa đầu vẫn chưa đúng. | Trưởng nhóm chỉ ra hai lần dựa trên hiểu biết thực tế; nhóm đánh giá lại và chọn VinFast làm bài chính. |
+| 9 | Ở thử nghiệm Xanh SM, GPT-4o-mini **lẫn ngưỡng "< 5%"** (điều xe sạc khi pin 6%, 8%); bản sửa prompt do trợ lý AI đề xuất lại làm hỏng một ca an toàn khác. | Chuyển quyết định ngưỡng sang code → 24/24 ca. Bài học này được áp dụng thẳng vào thiết kế VinFast (luật so khớp biểu mẫu ↔ tin nhắn). |
+| 10 | Ở VinFast, GPT-4o-mini gắn "không áp dụng" **không kèm trích dẫn** cho 15 mục đáng lẽ là "thiếu", và **tự chọn giá trị** ở 3/3 ca mâu thuẫn (VF-17 ghi ngược lời khách). | Xây lớp kiểm tra bằng code bắt được 15/21 lỗi; 3 lỗi mâu thuẫn còn lại là bước 1 trong lộ trình tới GO. |
 
-## 4. Bài học về prompt và ranh giới
+## 4. Prompt và ranh giới đã được điều chỉnh ra sao
 
-1. **Vá prompt có thể làm hỏng chỗ khác.** Mỗi lần sửa phải chạy lại **toàn bộ** bộ thử, không chỉ các ca vừa sai.
-2. **Đừng giao con số ngưỡng cho LLM.** Quyết định "< 5% hay ≥ 5%" là việc code làm đúng 100%; LLM nên lo phần đọc hiểu và soạn chữ.
-3. **Cần ca held-out.** Nếu chỉ đo trên các ca dùng để sửa prompt, kết quả sẽ đẹp hơn thực tế.
-4. **Trợ lý AI cũng "bịa" khi viết báo cáo**, không chỉ mô hình được kiểm thử. Mọi câu mang tính khẳng định ("đã đo", "đã xác nhận") đều phải trỏ được tới log hoặc dữ liệu.
+| Thiết kế | Lý do |
+|---|---|
+| Vai trò: **trợ lý của cố vấn**, chỉ tạo phiếu nháp | Không để model tự đóng vai kỹ thuật viên chẩn đoán hay người có quyền xác nhận |
+| 6 trạng thái: `provided`, `missing`, `unknown`, `not_applicable`, `conflicting`, `unclear` | Không coi mọi ô trống là thiếu; tôn trọng câu "tôi không nhớ" của khách |
+| Mỗi nhận định kèm `evidence` trích nguyên văn | Cố vấn kiểm tra nhanh; lớp Rule dùng được để phát hiện nhãn thiếu căn cứ |
+| Câu hỏi chỉ cho mục thiếu / chưa rõ / mâu thuẫn | Giảm hỏi thừa, không tự trả lời thay khách |
+| Không thêm triệu chứng theo yêu cầu "cho được ưu tiên"; không biến yêu cầu thành chẩn đoán | Giữ hồ sơ đúng sự thật; quyết định kỹ thuật thuộc về kỹ thuật viên |
+| `draft_summary` bắt đầu bằng `[DRAFT_ONLY]`, `draft_only` và `requires_human_review` luôn `true` | Mọi đầu ra ở trạng thái chờ cố vấn duyệt |
 
-## 5. Kết quả đo cuối cùng
+## 5. Bài học của nhóm
 
-| Cấu hình | Ca đạt | Pin nguy cấp → điều xe | Điều xe thừa | Giữ thẻ nháp | Lộ prompt |
-|---|---|---|---|---|---|
-| Prompt v3, chỉ dùng LLM | 22/24 | 13/13 | 2/11 | 9/11 | 0 |
-| **Prompt v3 + Hybrid** | **24/24** | **13/13** | **0/11** | **11/11** | **0** |
-
-Chi tiết: [02-deep-dive-report.md trên main](https://github.com/aialphaproduct/VinUni_Codelab_Day02/blob/main/02-deep-dive-report.md), mục 4; log: [`results/xanhsm/`](results/xanhsm/).
+1. **Một câu nghe hợp lý chưa phải là sự thật nghiệp vụ.** Cả trợ lý AI lẫn model kiểm thử đều có lúc đưa ra khẳng định thiếu căn cứ; người làm nghiệp vụ là người phát hiện nhanh nhất (sự việc 8).
+2. **Gọi API được ≠ đúng cấu trúc ≠ đúng nghiệp vụ.** Ba mức này phải đo riêng.
+3. **Việc có đáp án tất định thì giao cho code.** Ngưỡng số, so khớp giá trị — code đúng 100%, LLM thì không (sự việc 9, 10).
+4. **Kết quả chưa đạt vẫn là kết quả có giá trị** nếu chỉ ra được chính xác phải sửa ở đâu.
 
 ## 6. Phản tư cá nhân
 
-Bài học lớn nhất là kiểm chứng trước khi tin: bản báo cáo đầu tiên nghe rất thuyết phục nhưng hầu hết các khẳng định không có dữ liệu. Chỉ khi chạy đo, nhóm mới phát hiện LLM lẫn ngưỡng số — điều không thể thấy khi chỉ đọc prompt.
+Bài học lớn nhất là kiểm chứng trước khi tin. Bản báo cáo đầu tiên của tôi nghe rất thuyết phục nhưng nhiều khẳng định không có dữ liệu, và mô tả nghiệp vụ còn sai so với thực tế tài xế dùng app. Chỉ khi chạy đo, nhóm mới thấy LLM lẫn ngưỡng số — điều không thể thấy khi chỉ đọc prompt.

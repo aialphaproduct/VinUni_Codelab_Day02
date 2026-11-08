@@ -13,27 +13,7 @@
 
 **Người thực hiện nội dung gốc:** Lưu Thanh Mỹ
 **Ngày cập nhật:** 08/11/2026
-**Phạm vi đóng góp:** Bản trên branch cá nhân `luuthanhmy`, cùng nội dung với [báo cáo nhóm trên main](https://github.com/aialphaproduct/VinUni_Codelab_Day02/blob/main/02-deep-dive-report.md) — bản chấm điểm nhóm là bản trên `main`. Bài toán: Card #1 trong [01-problem-scan.md](01-problem-scan.md).
-
----
-
-> ### 📌 Quyết định chọn đề tài đại diện nhóm
-> Mỗi thành viên tự scoping một đề tài trên branch riêng. Vòng chọn đầu tiên, nhóm chọn bài VinFast của Lưu Văn Việt Đức vì là bài duy nhất có dữ liệu thử nghiệm. Đề tài Xanh SM của trưởng nhóm khi đó còn yếu: bám sát worked example của giảng viên và chưa có số liệu đo.
->
-> Nhóm sau đó **nâng cấp đề tài Xanh SM theo đúng phương pháp đánh giá của Đức** (bộ ca giả lập + đáp án + log + chấm tự động): xây bộ 24 ca, chạy đo 4 lượt và rút ra một quyết định kiến trúc có bằng chứng (mục 4.3). Vì đề tài này gắn trực tiếp với ranh giới an toàn mà file code `prompt_prototype.py` kiểm tra, nhóm chọn **Xanh SM làm bài chính**. Bài VinFast được giữ nguyên ở [`phu-luc-vinfast/` trên main](https://github.com/aialphaproduct/VinUni_Codelab_Day02/blob/main/phu-luc-vinfast/02-deep-dive-report.md) làm bài đối chiếu.
-
-### Đóng góp của từng thành viên
-
-| Thành viên | Branch | Đề tài cá nhân đã scoping | Đóng góp vào bài nhóm |
-|---|---|---|---|
-| Lưu Thanh Mỹ (Trưởng nhóm) | `luuthanhmy` | **Xanh SM — Co-pilot xử lý sự cố hết pin thực địa** | Tác giả đề tài chính (Quick Card #1); tạo repo, rà soát 6 branch, tổng hợp và merge `main` |
-| Lưu Văn Việt Đức | `vietduc` | VinFast — Phát hiện thông tin thiếu trong mô tả sửa chữa | Quick Card #2; **phương pháp đánh giá bằng dữ liệu** mà nhóm kế thừa cho bài chính; bài đối chiếu ở `phu-luc-vinfast/` |
-| Nguyễn Công Tĩnh | `nguyencongtinh` | Vinhomes – Vinpearl — Một đầu mối hỗ trợ cư dân/chủ sở hữu BĐS | Quick Card #3; góc nhìn "một cửa" cho hệ sinh thái BĐS |
-| Vũ Trí Dũng | `VuTriDung` | Vinmec — Đối chiếu hồ sơ bảo hiểm y tế, đối soát viện phí | Góp mảng y tế vào bảng Scan chung |
-| Phạm Quang Trường | `PhamQuangTruong` | Xanh SM — Phân tích lý do hủy chuyến | Góp bài toán Xanh SM thứ hai (phân tích offline) vào bảng Scan chung |
-| Khổng Tiến Dương | `khongtienduong` | Vinhomes — Phân loại & điều hướng khiếu nại cư dân | Góp ví dụ bài toán mà Rule-based router có thể đủ tốt trước khi cần LLM |
-
-**Phần cả nhóm cùng thực hiện khi tổng hợp:** xây bộ 24 ca thử Xanh SM (`xanhsm_cases/`), chạy đo 4 lượt v1 → v2 → v3 → hybrid (mục 4), phân tích lỗi và chọn kiến trúc Rule + LLM.
+**Phạm vi đóng góp:** **Đề tài cá nhân của Lưu Thanh Mỹ** trên branch `luuthanhmy`, gắn với ranh giới mà file code `prompt_prototype.py` của branch này kiểm tra. Bài chính của nhóm là đề tài VinFast ([02-deep-dive-report.md trên main](https://github.com/aialphaproduct/VinUni_Codelab_Day02/blob/main/02-deep-dive-report.md)); nhóm giữ bài này làm [phụ lục Xanh SM](https://github.com/aialphaproduct/VinUni_Codelab_Day02/blob/main/phu-luc-xanhsm/02-deep-dive-report.md) cho bài học kiến trúc: phần quyết định dựa trên con số nên để code làm, LLM lo phần ngôn ngữ.
 
 ---
 
@@ -201,7 +181,7 @@ Log từng lượt: [`results/xanhsm/`](results/xanhsm/) (mỗi lượt có `sum
 2. So sánh đề xuất của AI với quyết định thật của điều phối viên trên **≥ 200 sự cố**, đồng thời đo baseline thời gian.
 3. Chỉ chuyển sang dùng thật khi recall an toàn = 100% và điều xe thừa ≤ 5% trên dữ liệu thật, có điều phối viên đồng ý.
 
-**So với bài đối chiếu VinFast (NOT YET):** bài VinFast đo được recall 65% trên GPT, chưa đạt ngưỡng 90%, và chưa có kiến trúc khắc phục; bài Xanh SM đã đạt các ngưỡng an toàn trên bộ thử nhờ kiến trúc hybrid. Hai quyết định khác nhau vì **bằng chứng khác nhau**, cùng một tiêu chí.
+**So với đề tài VinFast — bài chính của nhóm (NOT YET):** bài VinFast đo được recall 65% trên GPT, chưa đạt ngưỡng 90%, nên nhóm chọn NOT YET kèm lộ trình 3 bước, trong đó bước đầu tiên chính là áp dụng bài học của thử nghiệm này (luật code cho phần tất định). Bài Xanh SM đạt các ngưỡng an toàn trên bộ thử nhờ kiến trúc hybrid. Hai quyết định khác nhau vì **bằng chứng khác nhau**, cùng một tiêu chí.
 
 ## 6. Q&A dự kiến khi thuyết trình
 
@@ -218,5 +198,5 @@ Log từng lượt: [`results/xanhsm/`](results/xanhsm/) (mỗi lượt có `sum
 - Bộ ca và đáp án: [`xanhsm_cases/`](xanhsm_cases/inputs.json)
 - Log 4 lượt chạy: [`results/xanhsm/`](results/xanhsm/)
 - Code nộp bài và script đo: branch [`luuthanhmy`](https://github.com/aialphaproduct/VinUni_Codelab_Day02/tree/luuthanhmy) — `starter-code/prompt_prototype.py`, `tools/xanhsm_eval.py`
-- Bài đối chiếu VinFast (Lưu Văn Việt Đức): [`phu-luc-vinfast/` trên main](https://github.com/aialphaproduct/VinUni_Codelab_Day02/blob/main/phu-luc-vinfast/02-deep-dive-report.md)
+- Bài chính của nhóm — VinFast (Lưu Văn Việt Đức), bản gốc và dữ liệu: [`phu-luc-vinfast/`](https://github.com/aialphaproduct/VinUni_Codelab_Day02/blob/main/phu-luc-vinfast/02-deep-dive-report.md)
 - Nhật ký dùng AI: [03-ai-log.md](03-ai-log.md)
