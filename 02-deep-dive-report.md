@@ -26,12 +26,12 @@
 
 | Thành viên | Branch | Đề tài cá nhân đã scoping | Đóng góp vào bài nhóm |
 |---|---|---|---|
-| Lưu Thanh Mỹ (Trưởng nhóm) | `luuthanhmy` | **Xanh SM — Co-pilot xử lý sự cố hết pin thực địa** | Tác giả đề tài chính; tạo repo, rà soát 6 branch, tổng hợp và merge `main` |
-| Lưu Văn Việt Đức | `vietduc` | VinFast — Chuẩn hóa mô tả sửa chữa thành phiếu tiếp nhận | **Phương pháp đánh giá bằng dữ liệu** mà nhóm kế thừa cho bài chính; bài đối chiếu ở `phu-luc-vinfast/` |
-| Nguyễn Công Tĩnh | `nguyencongtinh` | Vinhomes – Vinpearl — Tiếp nhận yêu cầu cư dân/chủ sở hữu BĐS nghỉ dưỡng | Phương án đối chiếu; góc nhìn "một cửa" cho hệ sinh thái BĐS |
-| Vũ Trí Dũng | `VuTriDung` | Vinmec — Scan 5 bài toán (bảo hiểm y tế, đối soát viện phí, lịch khám…) | Góp mảng y tế vào vòng Scan chung |
-| Phạm Quang Trường | `PhamQuangTruong` | Xanh SM — Phân tích lý do hủy chuyến | Phương án đối chiếu cùng công ty Xanh SM (bài toán offline) |
-| Khổng Tiến Dương | `khongtienduong` | Vinhomes — Phân loại & điều hướng khiếu nại cư dân | Phương án đối chiếu; minh họa trường hợp Rule-based đủ tốt |
+| Lưu Thanh Mỹ (Trưởng nhóm) | `luuthanhmy` | **Xanh SM — Co-pilot xử lý sự cố hết pin thực địa** | Tác giả đề tài chính (Quick Card #1); tạo repo, rà soát 6 branch, tổng hợp và merge `main` |
+| Lưu Văn Việt Đức | `vietduc` | VinFast — Phát hiện thông tin thiếu trong mô tả sửa chữa | Quick Card #2; **phương pháp đánh giá bằng dữ liệu** mà nhóm kế thừa cho bài chính; bài đối chiếu ở `phu-luc-vinfast/` |
+| Nguyễn Công Tĩnh | `nguyencongtinh` | Vinhomes – Vinpearl — Một đầu mối hỗ trợ cư dân/chủ sở hữu BĐS | Quick Card #3; góc nhìn "một cửa" cho hệ sinh thái BĐS |
+| Vũ Trí Dũng | `VuTriDung` | Vinmec — Đối chiếu hồ sơ bảo hiểm y tế, đối soát viện phí | Góp mảng y tế vào bảng Scan chung |
+| Phạm Quang Trường | `PhamQuangTruong` | Xanh SM — Phân tích lý do hủy chuyến | Góp bài toán Xanh SM thứ hai (phân tích offline) vào bảng Scan chung |
+| Khổng Tiến Dương | `khongtienduong` | Vinhomes — Phân loại & điều hướng khiếu nại cư dân | Góp ví dụ bài toán mà Rule-based router có thể đủ tốt trước khi cần LLM |
 
 **Phần cả nhóm cùng thực hiện khi tổng hợp:** xây bộ 24 ca thử Xanh SM (`xanhsm_cases/`), chạy đo 4 lượt v1 → v2 → v3 → hybrid (mục 4), phân tích lỗi và chọn kiến trúc Rule + LLM.
 
