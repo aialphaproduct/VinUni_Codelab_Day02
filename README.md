@@ -20,7 +20,7 @@
 > | G3. AI Fit & Future Flow | 10 | [02 · mục 3](02-deep-dive-report.md#3-phase-33--future-state-flow--ai-fit): so sánh Rule/LLM/Agent có số liệu, 🔵 AI Step, 🟢 HITL, ↩️ Fallback |
 > | G4. Decision Quality | 10 | [02 · mục 5](02-deep-dive-report.md#5-phase-5--evaluate): checklist, NOT YET, lý giải bằng số đo |
 > | I1. Scan & Cards | 15 | [01-problem-scan.md](01-problem-scan.md) (bản nhóm) + bài cá nhân trên branch từng thành viên |
-> | I2. Prototyping | 10 | `starter-code/prompt_prototype.py` trên branch cá nhân; kết quả đo ở [02 · mục 4](02-deep-dive-report.md#4-phase-4--technical-prompt-prototype--kết-quả-đo) |
+> | I2. Prototyping | 10 | `starter-code/prompt_prototype.py` trên branch cá nhân (không merge vào `main` theo quy định). Ví dụ đã chạy thật bằng Gemini: [code branch `luuthanhmy`](https://github.com/aialphaproduct/VinUni_Codelab_Day02/blob/luuthanhmy/starter-code/prompt_prototype.py) — 3/3 test ranh giới Passed, autograder 5/5 ([log](https://github.com/aialphaproduct/VinUni_Codelab_Day02/blob/luuthanhmy/results/gemini_prototype/20261108_gemini-3.5-flash_run.txt)). Kết quả đo đề tài chính ở [02 · mục 4](02-deep-dive-report.md#4-phase-4--technical-prompt-prototype--kết-quả-đo) |
 > | I3. AI Log & Reflection | 15 | [03-ai-log.md](03-ai-log.md) (bản nhóm) + AI-log cá nhân trên branch từng thành viên |
 >
 > **Code `.py` (chấm cá nhân)** nằm trên branch riêng của từng thành viên, không merge vào `main` theo quy định bên dưới.
