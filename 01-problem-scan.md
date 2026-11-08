@@ -28,7 +28,7 @@ Mỗi thành viên tự scan và chọn một đề tài trên branch cá nhân;
 
 | # | Người đề xuất | Subsidiary | Lens | Mô tả ngắn bài toán |
 |---|---|---|---|---|
-| 1 | Lưu Thanh Mỹ | **Xanh SM (GSM)** | Lặp lại | Tài xế báo hết pin giữa đường; điều phối viên phải tra GPS, tìm trạm sạc còn trụ trống và **chọn giữa chỉ đường hay điều xe sạc di động theo mức pin**, rồi soạn tin hướng dẫn — lặp lại nhiều lần mỗi ca trực. |
+| 1 | Lưu Thanh Mỹ | **Xanh SM (GSM)** | Lặp lại | Tài xế báo hết pin giữa đường. Trạm sạc và số trụ trống **đã xem được trên app có sẵn**, nhưng điều phối viên vẫn phải **tự quyết chỉ đường hay điều xe sạc di động theo mức pin** và soạn tin hướng dẫn trong lúc bị hối thúc — lặp lại nhiều lần mỗi ca trực; quyết định sai thì xe cạn pin giữa đường hoặc tốn chi phí điều xe. |
 | 2 | Lưu Văn Việt Đức | **VinFast — Dịch vụ hậu mãi** | Pain từ người khác | Khách mô tả hiện tượng của xe ngắn và thiếu thông tin (*"điều hòa không mát"*); cố vấn dịch vụ phải tự phát hiện mục còn thiếu (thời điểm, tần suất, điều kiện) và hỏi lại trước khi lập phiếu tiếp nhận. |
 | 3 | Nguyễn Công Tĩnh | **Vinhomes – Vinpearl** | Pain từ người khác | Cư dân và chủ sở hữu BĐS nghỉ dưỡng phải liên hệ nhiều đầu mối (phí dịch vụ, pháp lý, vận hành, nghỉ dưỡng) mà không có một đầu mối chung; yêu cầu bị chuyển qua lại và phải trình bày lại nhiều lần. |
 | 4 | Vũ Trí Dũng | **Vinmec** | Tốn thời gian | Kiểm tra, đối chiếu hồ sơ bảo hiểm y tế và xử lý yêu cầu bổ sung giấy tờ trước khi thanh toán; đối soát viện phí, mã dịch vụ và hóa đơn với hồ sơ điều trị. |
@@ -56,12 +56,13 @@ Mỗi thành viên tự scan và chọn một đề tài trên branch cá nhân;
 │ tài xế (chờ đợi, rủi ro cạn pin giữa đường).                │
 │                                                             │
 │ Workflow thủ công hiện tại (5 bước):                        │
-│   1. Nhận báo cáo ──> 2. Tra GPS xe ──> 3. Tra trạm sạc     │
-│   trống ──> 4. Chọn hành động + soạn tin ──> 5. Điều xe sạc │
-│   di động nếu pin quá thấp                                  │
+│   1. Nhận báo cáo ──> 2. Tra GPS xe ──> 3. Xem trạm trống   │
+│   trên app có sẵn ──> 4. Chọn hành động + soạn tin ──>      │
+│   5. Điều xe sạc di động nếu pin quá thấp                   │
 │                                                             │
-│ Bước nào tốn thời gian/lỗi nhất? Bước 3–4 (~10 phút/lượt,   │
-│ giả định chưa đo). Sai ngưỡng pin → cạn pin hoặc tốn chi phí│
+│ Bước nào tốn thời gian/lỗi nhất? Bước 4 (giả định ~5 phút,  │
+│ chưa đo): dữ liệu trạm đã có trên app, cái khó là quyết định│
+│ đúng theo mức pin. Sai ngưỡng → cạn pin hoặc tốn chi phí.   │
 │ AI hỗ trợ ở bước nào? Bước 4: code đọc % pin và quyết ngưỡng│
 │ < 5%, LLM soạn tin nháp và suy luận khi không có con số.    │
 │                                                             │
@@ -69,7 +70,7 @@ Mỗi thành viên tự scan và chọn một đề tài trên branch cá nhân;
 │ • 100% ca pin < 5% được điều xe sạc — đạt 13/13             │
 │ • Điều xe thừa ≤ 1/11 ca pin ≥ 5% — đạt 0/11 (hybrid)       │
 │ • 100% tin có [DRAFT_ONLY], 0 lần lộ prompt — đạt           │
-│ • Thời gian ~15 → dưới 3 phút/lượt (mục tiêu, chưa đo)      │
+│ • Thời gian ~11–12 → dưới 3 phút/lượt (mục tiêu, chưa đo)   │
 │                                                             │
 │ Quick Architecture: [x] Rule + LLM (hybrid) + HITL           │
 │ Boundary: không gửi tin khi chưa duyệt; pin < 5% không chỉ  │

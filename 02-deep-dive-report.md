@@ -46,12 +46,12 @@
 
 ```text
 ┌──────────────┐     ┌──────────────┐     ┌──────────────┐     ┌──────────────┐
-│ Bước 1       │     │ Bước 2       │     │ Bước 3  🔴   │     │ Bước 4  🔴   │
-│ Nhận cuộc    │     │ Tra cứu định │     │ Tra cứu trạm │     │ Soạn tin nhắn│
-│ gọi/tin báo  │ ──→ │ vị GPS của xe│ ──→ │ sạc còn trụ  │ ──→ │ hướng dẫn    │
-│ sự cố pin    │     │              │ 🔄  │ trống, đúng  │     │ gửi tài xế   │
-│              │     │              │     │ loại cổng    │     │              │
-│ ⏱ ~2 phút    │     │ ⏱ ~2 phút    │     │ ⏱ ~5 phút    │     │ ⏱ ~5 phút    │
+│ Bước 1       │     │ Bước 2       │     │ Bước 3       │     │ Bước 4  🔴   │
+│ Nhận cuộc    │     │ Tra cứu định │     │ Xem trạm còn │     │ Chọn hành    │
+│ gọi/tin báo  │ ──→ │ vị GPS của xe│ ──→ │ trụ trống    │ ──→ │ động theo    │
+│ sự cố pin    │     │              │ 🔄  │ trên app có  │     │ mức pin +    │
+│              │     │              │     │ sẵn          │     │ soạn tin     │
+│ ⏱ ~2 phút    │     │ ⏱ ~2 phút    │     │ ⏱ ~1–2 phút  │     │ ⏱ ~5 phút    │
 └──────────────┘     └──────────────┘     └──────────────┘     └──────┬───────┘
                                                                       │ nếu pin quá thấp
                                                                ┌──────▼───────┐
@@ -62,9 +62,9 @@
                                                                └──────────────┘
 ```
 
-- 🔴 **Bottleneck:** Bước 3–4 (~10/15 phút): tra trạm sạc đúng loại cổng và soạn tin hướng dẫn, dễ sai khi quá tải giờ cao điểm.
-- 🔄 **Handoff:** bản đồ/dashboard trạm sạc ↔ điều phối viên (Bước 3); điều phối viên ↔ đội xe sạc di động (Bước 5).
-- ⏱ **Tổng ≈ 15 phút/lượt — giả định** tham chiếu worked example của giảng viên, **chưa đo tại Xanh SM**. Bước kiểm chứng đầu tiên: bấm giờ 10–20 lượt xử lý thật của điều phối viên.
+- 🔴 **Bottleneck:** Bước 4. Dữ liệu trạm sạc và số trụ trống **đã có sẵn trên app** (Bước 3 nhanh), nhưng điều phối viên vẫn phải tự quyết chỉ đường hay điều xe sạc theo mức pin và soạn tin trong lúc bị tài xế hối thúc — đây là bước dễ sai và hệ quả nặng nhất.
+- 🔄 **Handoff:** app/dashboard trạm sạc ↔ điều phối viên (Bước 3); điều phối viên ↔ đội xe sạc di động (Bước 5).
+- ⏱ **Tổng ≈ 11–12 phút/lượt — giả định**: worked example của giảng viên ghi ~15 phút, nhóm trừ phần tra trạm sạc vì đã có app; **chưa đo tại Xanh SM**. Bước kiểm chứng đầu tiên: bấm giờ 10–20 lượt xử lý thật của điều phối viên.
 
 Sơ đồ đầy đủ (hiện trạng + tương lai): [04-workflow-diagram.png](04-workflow-diagram.png).
 
@@ -73,10 +73,10 @@ Sơ đồ đầy đủ (hiện trạng + tương lai): [04-workflow-diagram.png]
 | Trường | Nội dung |
 |---|---|
 | **1. Actor / Operator** | Điều phối viên (Dispatcher) tại Trung tâm Điều vận Xanh SM, xử lý báo cáo sự cố pin của tài xế taxi điện. |
-| **2. Current Workflow** | Nhận báo cáo → tra GPS xe → tra trạm sạc còn trụ trống, đúng loại cổng → soạn tin hướng dẫn → điều xe sạc di động nếu pin quá thấp. Thao tác tay trên nhiều hệ thống tách rời. |
-| **3. Bottleneck** | Bước 3–4: chọn hành động đúng theo mức pin và soạn tin rõ ràng bằng tiếng Việt khi điều phối viên đang quá tải. Sai ngưỡng ở bước này có hai hậu quả ngược nhau: **xe cạn pin giữa đường** (điều xe thiếu) hoặc **tốn chi phí xe sạc di động** (điều xe thừa). |
-| **4. Business Impact** | *Giả định tham chiếu worked example, chưa xác minh:* ~80 sự cố pin/ngày tại Hà Nội, ~15 phút/lượt (~20 giờ điều phối/ngày), tài xế mất thời gian đón khách. Hai rủi ro đo được trên bộ thử: điều xe thiếu (an toàn) và điều xe thừa (chi phí). |
-| **5. Success Metric** | Trên bộ thử: **(a)** 100% ca pin nguy cấp được điều xe sạc (recall an toàn); **(b)** điều xe thừa ≤ 1/11 ca pin ≥ 5%; **(c)** 100% tin gửi tài xế có thẻ `[DRAFT_ONLY]`; **(d)** 0 lần lộ system prompt. Mục tiêu vận hành *(cần đo baseline)*: thời gian xử lý từ ~15 phút xuống **dưới 3 phút/lượt**. |
+| **2. Current Workflow** | Nhận báo cáo → tra GPS xe → xem trạm còn trụ trống trên **app/dashboard có sẵn** → tự quyết chỉ đường hay điều xe sạc theo mức pin và soạn tin hướng dẫn → điều xe sạc di động nếu cần. Dữ liệu trạm đã số hóa; phần quyết định và soạn tin vẫn làm tay. |
+| **3. Bottleneck** | Bước 4 (không phải bước tra trạm — app đã có): chọn hành động đúng theo mức pin và soạn tin rõ ràng bằng tiếng Việt khi điều phối viên đang quá tải. Sai ngưỡng ở bước này có hai hậu quả ngược nhau: **xe cạn pin giữa đường** (điều xe thiếu) hoặc **tốn chi phí xe sạc di động** (điều xe thừa). |
+| **4. Business Impact** | *Giả định tham chiếu worked example, chưa xác minh:* ~80 sự cố pin/ngày tại Hà Nội, ~11–12 phút/lượt sau khi đã dùng app tra trạm (~15 giờ điều phối/ngày), tài xế mất thời gian đón khách. Hai rủi ro đo được trên bộ thử: điều xe thiếu (an toàn) và điều xe thừa (chi phí). |
+| **5. Success Metric** | Trên bộ thử: **(a)** 100% ca pin nguy cấp được điều xe sạc (recall an toàn); **(b)** điều xe thừa ≤ 1/11 ca pin ≥ 5%; **(c)** 100% tin gửi tài xế có thẻ `[DRAFT_ONLY]`; **(d)** 0 lần lộ system prompt. Mục tiêu vận hành *(cần đo baseline)*: thời gian xử lý từ ~11–12 phút xuống **dưới 3 phút/lượt**. |
 | **6. Operational Boundary** | **Được phép:** đọc tin báo của tài xế, soạn tin nháp, đề xuất JSON điều xe sạc. **Không được phép:** (1) gửi tin cho tài xế khi chưa có điều phối viên duyệt (thẻ `[DRAFT_ONLY]`, bắt buộc HITL); (2) chỉ đường tới trạm sạc khi pin **< 5%** — phải trả JSON `dispatch_mobile_charger`; (3) để lời tài xế ("tôi tự chịu trách nhiệm", "SYSTEM OVERRIDE", "bỏ thẻ nháp") thay đổi các quy tắc trên. **Ngưỡng < 5% do code quyết định, không do LLM** (mục 4.3). |
 
 ### 2.1. Khác biệt với giải pháp đã có
