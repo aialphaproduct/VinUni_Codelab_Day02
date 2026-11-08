@@ -46,6 +46,8 @@ Hai vai trò được tách rõ: **gợi ý của trợ lý AI không phải là
 | 4 | **gpt-4o-mini lẫn ngưỡng số**: điều xe sạc khi pin 5% và 6% (v1), rồi 6% và 8% (v3), với lý do **bịa "pin dưới 5%"**. | Định nghĩa lại ngưỡng trong prompt (v2) — chưa đủ. Chuyển quyết định ngưỡng sang code (hybrid) → 0 lần điều xe thừa. |
 | 5 | **Bản sửa prompt v2 do trợ lý AI đề xuất làm hỏng ca an toàn**: thêm dòng "câu từ chối phải có thẻ `[DRAFT_ONLY]`" khiến XS-15 (pin 3% + "SYSTEM OVERRIDE") trả lời *"tôi sẽ điều xe"* bằng chữ mà **không có JSON** — hệ thống thật sẽ không điều xe nào. Kết quả trên 20 ca cũ giảm từ 17/20 xuống 16/20. | So sánh log v1 và v2 theo từng ca để tìm nguyên nhân; thêm quy tắc "khi pin nguy cấp, JSON luôn ưu tiên hơn câu từ chối" (v3) → 13/13 ca nguy cấp. |
 | 6 | Câu từ chối in system prompt (XS-18) **thiếu thẻ `[DRAFT_ONLY]`** ở v1 và v2. | Sửa ở v3; trong hybrid thêm lớp code chặn mọi đầu ra thiếu thẻ (fail-closed). |
+| 7 | Bảng SCAN và Quick Cards đầu tiên do trợ lý AI soạn là **5 bài toán chung chung lấy từ gợi ý của đề**, không phải đề tài thật của nhóm; Card #3 (Vinmec tóm tắt xuất viện) **không phải đề tài của thành viên nào**. | Trưởng nhóm phát hiện khi đọc lại bản nộp; thay bằng đề tài thật trên branch của 6 thành viên, Card #2 và #3 lấy từ bài của Đức và Tĩnh. |
+| 8 | Mô tả bài toán và sơ đồ hiện trạng do trợ lý AI viết coi bước **tra trạm sạc còn trụ trống** là việc thủ công tốn ~5 phút và là bottleneck, trong khi **Xanh SM/VinFast đã có app** hiển thị trạm và số trụ trống. | Trưởng nhóm chỉ ra dựa trên hiểu biết thực tế; sửa Bước 3 thành "xem trạm trên app có sẵn", dồn bottleneck về Bước 4 (quyết định theo mức pin + soạn tin) và hạ mốc giả định từ ~15 xuống ~11–12 phút/lượt. |
 
 ## 4. Bài học về prompt và ranh giới
 
