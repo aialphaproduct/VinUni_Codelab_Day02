@@ -9,7 +9,10 @@
 | 3 | Nguyễn Công Tĩnh | tinh22102004@gmail.com |
 | 4 | Vũ Trí Dũng | dungvutri25@gmail.com |
 | 5 | Phạm Quang Trường | truongpham090325@gmail.com |
-| 6 | Dương | khongtienduongcv@gmail.com |
+| 6 | Khổng Tiến Dương | khongtienduongcv@gmail.com |
+
+**Người thực hiện nội dung gốc:** Lưu Thanh Mỹ
+**Phạm vi đóng góp:** Bài Scan & Quick Cards **cá nhân** của Lưu Thanh Mỹ trên branch `luuthanhmy` (chấm điểm cá nhân I1), cùng nội dung với [bản nhóm trên main](https://github.com/aialphaproduct/VinUni_Codelab_Day02/blob/main/01-problem-scan.md).
 
 ---
 
@@ -33,7 +36,22 @@ Nhóm đóng vai trò **AI Product Engineer** tại **Vin Smart Future** (đơn 
 
 ---
 
+## 👥 Scan của cả nhóm (đề tài cá nhân từng thành viên)
+
+| Thành viên | Subsidiary | Đề tài cá nhân | Lens |
+|---|---|---|---|
+| Lưu Thanh Mỹ | Xanh SM | Co-pilot xử lý sự cố hết pin thực địa | Lặp lại / Stakeholder pain |
+| Lưu Văn Việt Đức | VinFast | Chuẩn hóa mô tả sửa chữa thành phiếu tiếp nhận ([phụ lục](https://github.com/aialphaproduct/VinUni_Codelab_Day02/blob/main/phu-luc-vinfast/01-problem-scan.md)) | Stakeholder pain |
+| Nguyễn Công Tĩnh | Vinhomes – Vinpearl | Tiếp nhận yêu cầu cư dân/chủ sở hữu BĐS nghỉ dưỡng qua một đầu mối | AI-upgrade |
+| Vũ Trí Dũng | Vinmec | Đối chiếu hồ sơ bảo hiểm y tế; đối soát viện phí, mã dịch vụ, hóa đơn | Tốn thời gian / Lặp lại |
+| Phạm Quang Trường | Xanh SM | Phân tích lý do hủy chuyến từ ghi âm + ghi chú tài xế | Stakeholder pain |
+| Khổng Tiến Dương | Vinhomes | Phân loại & điều hướng khiếu nại cư dân | Lặp lại |
+
+---
+
 ## 🃏 Phase 2 — QUICK-ASSESS: 3 Quick Problem Cards
+
+> Số phút/lượt trong các card là **ước lượng ban đầu, chưa đo**. Riêng Card #1 đã có số liệu đo trên bộ thử 24 ca (xem [02-deep-dive-report.md](02-deep-dive-report.md), mục 4).
 
 ### Quick Problem Card #1 — Xanh SM: Xử lý sự cố hết pin thực địa ⭐ (Được chọn cho Deep-Dive)
 
@@ -58,9 +76,12 @@ Nhóm đóng vai trò **AI Product Engineer** tại **Vin Smart Future** (đơn 
 │ (tự động lấy vị trí, lọc trạm sạc phù hợp, draft tin nhắn)    │
 │                                                               │
 │ Đo thành công bằng gì (Metric có số)?                         │
-│ Giảm thời gian xử lý sự cố từ ~15 phút ──> dưới 3 phút/lượt.  │
+│ • 100% ca pin < 5% được điều xe sạc (đã đo: 13/13)            │
+│ • Điều xe thừa ≤ 1/11 ca pin ≥ 5% (đã đo: 0/11 với hybrid)    │
+│ • Thời gian ~15 phút ──> dưới 3 phút/lượt (giả định, chưa đo) │
 │                                                               │
-│ Quick Architecture: [x] LLM Feature                           │
+│ Quick Architecture: [x] Rule + LLM (hybrid) — cập nhật sau    │
+│ khi đo: LLM thuần lẫn ngưỡng số, xem 02-deep-dive mục 4.3     │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -130,6 +151,7 @@ Nhóm đóng vai trò **AI Product Engineer** tại **Vin Smart Future** (đơn 
 Nhóm chọn **Card #1 — Xanh SM: Xử lý sự cố hết pin thực địa** để Deep-Dive (xem chi tiết tại [02-deep-dive-report.md](02-deep-dive-report.md)), vì:
 
 - Tác động trực tiếp đến an toàn vận hành thời gian thực, không thể trì hoãn xử lý như Card #2/#3.
-- Ranh giới an toàn (Operational Boundary) rõ ràng, dễ kiểm chứng bằng test case lập trình (Phase 4).
+- Ranh giới an toàn (Operational Boundary) rõ ràng, kiểm chứng được bằng bộ thử 24 ca: kiến trúc hybrid đạt 13/13 ca pin nguy cấp, 7/7 ca tấn công, 0 điều xe thừa.
+- Khớp trực tiếp với ranh giới mà file code `prompt_prototype.py` của lab kiểm tra.
 - Card #3 (Vinmec) tuy giá trị cao nhưng rủi ro y tế đòi hỏi quy trình compliance phức tạp hơn nhiều, cần một lab riêng để xử lý đúng mức.
 - Card #2 (Vinhomes) có thể giải quyết tốt bằng rule-based router đơn giản trước khi cần đến LLM, độ ưu tiên AI thấp hơn.
