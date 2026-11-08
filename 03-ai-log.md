@@ -1,5 +1,16 @@
 # 03-ai-log.md — Nhật ký tương tác AI & Phản ánh (AI Log & Reflection)
 
+**Tên nhóm:** Simple-Tech
+**Thành viên nhóm:**
+| # | Họ và tên | Email |
+|---|-----------|-------|
+| 1 | Lưu Thanh Mỹ (Trưởng nhóm) | data97688@gmail.com |
+| 2 | Lưu Văn Việt Đức | luuvanvietduc@gmail.com |
+| 3 | Nguyễn Công Tĩnh | tinh22102004@gmail.com |
+| 4 | Vũ Trí Dũng | dungvutri25@gmail.com |
+| 5 | Phạm Quang Trường | truongpham090325@gmail.com |
+| 6 | Khổng Tiến Dương | khongtienduongcv@gmail.com |
+
 > **Học viên:** Nguyễn Công Tĩnh · **Branch cá nhân:** congtinhx · **Lab 02: AI Product Scoping**
 >
 > Bài tự luận phản ánh quá trình dùng AI làm **thought-partner** trong buổi lab — chấm theo Gate **I3. AI Log & Reflection (15 điểm)**: *"Phản ánh trung thực về việc dùng AI làm thought-partner (giúp gì, sai gì, sửa gì)"*.
