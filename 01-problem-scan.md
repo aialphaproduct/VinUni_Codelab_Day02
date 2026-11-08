@@ -28,7 +28,7 @@ Mỗi thành viên tự scan và chọn một đề tài trên branch cá nhân;
 
 | # | Người đề xuất | Subsidiary | Lens | Mô tả ngắn bài toán |
 |---|---|---|---|---|
-| 1 | Lưu Thanh Mỹ | **Xanh SM (GSM)** | Lặp lại | Tài xế báo hết pin giữa đường. Trạm sạc và số trụ trống **đã xem được trên app có sẵn**, nhưng điều phối viên vẫn phải **tự quyết chỉ đường hay điều xe sạc di động theo mức pin** và soạn tin hướng dẫn trong lúc bị hối thúc — lặp lại nhiều lần mỗi ca trực; quyết định sai thì xe cạn pin giữa đường hoặc tốn chi phí điều xe. |
+| 1 | Lưu Thanh Mỹ | **Xanh SM (GSM)** | Pain từ người khác | Tài xế **tự tra trạm sạc trên app** và tự đi sạc, nhưng app không cho biết xe có chạy tới nơi nổi không khi pin rất thấp. Khi pin nguy cấp, tài xế phải gọi tổng đài; điều phối viên **tự quyết cho tài xế tự chạy tới trạm hay điều xe sạc di động** và soạn phản hồi trong lúc bị hối thúc — quyết định sai thì xe cạn pin giữa đường hoặc tốn chi phí điều xe. |
 | 2 | Lưu Văn Việt Đức | **VinFast — Dịch vụ hậu mãi** | Pain từ người khác | Khách mô tả hiện tượng của xe ngắn và thiếu thông tin (*"điều hòa không mát"*); cố vấn dịch vụ phải tự phát hiện mục còn thiếu (thời điểm, tần suất, điều kiện) và hỏi lại trước khi lập phiếu tiếp nhận. |
 | 3 | Nguyễn Công Tĩnh | **Vinhomes – Vinpearl** | Pain từ người khác | Cư dân và chủ sở hữu BĐS nghỉ dưỡng phải liên hệ nhiều đầu mối (phí dịch vụ, pháp lý, vận hành, nghỉ dưỡng) mà không có một đầu mối chung; yêu cầu bị chuyển qua lại và phải trình bày lại nhiều lần. |
 | 4 | Vũ Trí Dũng | **Vinmec** | Tốn thời gian | Kiểm tra, đối chiếu hồ sơ bảo hiểm y tế và xử lý yêu cầu bổ sung giấy tờ trước khi thanh toán; đối soát viện phí, mã dịch vụ và hóa đơn với hồ sơ điều trị. |
@@ -47,30 +47,30 @@ Mỗi thành viên tự scan và chọn một đề tài trên branch cá nhân;
 ┌─────────────────────────────────────────────────────────────┐
 │ QUICK PROBLEM CARD #1                                       │
 │                                                             │
-│ Bài toán: Tài xế Xanh SM báo hết pin/pin yếu giữa đường;    │
-│ điều phối viên phải chọn chỉ đường tới trạm sạc hay điều xe │
-│ sạc di động, rồi soạn tin hướng dẫn.                        │
+│ Bài toán: Tài xế tự tra trạm sạc trên app, nhưng khi pin    │
+│ nguy cấp phải gọi tổng đài; điều phối viên phải quyết cho   │
+│ tài xế tự chạy tới trạm hay điều xe sạc di động.            │
 │ Công ty thành viên: [x] Xanh SM (GSM)                       │
 │                                                             │
-│ Ai đang đau (Actor)? Điều phối viên (quá tải giờ cao điểm); │
-│ tài xế (chờ đợi, rủi ro cạn pin giữa đường).                │
+│ Ai đang đau (Actor)? Điều phối viên (quyết định dưới áp lực │
+│ giờ cao điểm); tài xế (rủi ro cạn pin giữa đường).          │
 │                                                             │
-│ Workflow thủ công hiện tại (5 bước):                        │
-│   1. Nhận báo cáo ──> 2. Tra GPS xe ──> 3. Xem trạm trống   │
-│   trên app có sẵn ──> 4. Chọn hành động + soạn tin ──>      │
-│   5. Điều xe sạc di động nếu pin quá thấp                   │
+│ Workflow hiện tại (ca leo thang, 4 bước):                   │
+│   1. Tài xế gọi/nhắn báo pin nguy cấp ──> 2. Xác minh mức   │
+│   pin, vị trí, khoảng cách trạm ──> 3. Quyết định tự chạy   │
+│   hay điều xe + soạn phản hồi ──> 4. Điều xe sạc nếu cần    │
 │                                                             │
-│ Bước nào tốn thời gian/lỗi nhất? Bước 4 (giả định ~5 phút,  │
-│ chưa đo): dữ liệu trạm đã có trên app, cái khó là quyết định│
-│ đúng theo mức pin. Sai ngưỡng → cạn pin hoặc tốn chi phí.   │
-│ AI hỗ trợ ở bước nào? Bước 4: code đọc % pin và quyết ngưỡng│
-│ < 5%, LLM soạn tin nháp và suy luận khi không có con số.    │
+│ Bước nào tốn thời gian/lỗi nhất? Bước 3 (giả định ~5 phút,  │
+│ chưa đo). App không đánh giá được xe có tới nơi được không; │
+│ sai ngưỡng → cạn pin giữa đường hoặc tốn chi phí điều xe.   │
+│ AI hỗ trợ ở bước nào? Bước 3: code đọc % pin và quyết ngưỡng│
+│ < 5%, LLM soạn phản hồi và suy luận khi không có con số.    │
 │                                                             │
 │ Metric (đã đo trên 24 ca giả lập):                          │
 │ • 100% ca pin < 5% được điều xe sạc — đạt 13/13             │
 │ • Điều xe thừa ≤ 1/11 ca pin ≥ 5% — đạt 0/11 (hybrid)       │
 │ • 100% tin có [DRAFT_ONLY], 0 lần lộ prompt — đạt           │
-│ • Thời gian ~11–12 → dưới 3 phút/lượt (mục tiêu, chưa đo)   │
+│ • Thời gian ca leo thang ~10 → dưới 3 phút (mục tiêu)       │
 │                                                             │
 │ Quick Architecture: [x] Rule + LLM (hybrid) + HITL           │
 │ Boundary: không gửi tin khi chưa duyệt; pin < 5% không chỉ  │
@@ -150,7 +150,7 @@ Mỗi thành viên tự scan và chọn một đề tài trên branch cá nhân;
 
 Nhóm chọn **Card #1 — Xanh SM: Xử lý sự cố hết pin thực địa** để Deep-Dive (xem chi tiết tại [02-deep-dive-report.md](02-deep-dive-report.md)), vì:
 
-- Tác động trực tiếp đến an toàn vận hành thời gian thực (xe cạn pin giữa đường), không thể trì hoãn như Card #2/#3.
+- Giải quyết đúng khoảng trống mà app tra trạm của tài xế chưa làm được: **đánh giá xe có tới được trạm không** khi pin nguy cấp — tác động trực tiếp tới an toàn (xe cạn pin giữa đường), không thể trì hoãn như Card #2/#3.
 - Ranh giới an toàn (Operational Boundary) rõ ràng, kiểm chứng được bằng bộ thử 24 ca: kiến trúc hybrid đạt 13/13 ca pin nguy cấp, 7/7 ca tấn công, 0 điều xe thừa.
 - Khớp trực tiếp với ranh giới mà file code `prompt_prototype.py` của lab kiểm tra.
 - **Card #2 (VinFast — Đức)** có phương pháp đánh giá tốt nhất nhóm, nhưng recall đo được mới đạt 65% (mục tiêu 90%), nên giữ làm bài đối chiếu ở [`phu-luc-vinfast/`](phu-luc-vinfast/02-deep-dive-report.md); phương pháp đánh giá của Đức được dùng lại cho bài chính.
