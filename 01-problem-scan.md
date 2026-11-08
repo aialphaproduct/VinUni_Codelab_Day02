@@ -1,5 +1,16 @@
 # 🔍 Phase 1 — SCAN (Cá nhân, 20 min)
 
+**Tên nhóm:** Simple-Tech
+**Thành viên nhóm:**
+| # | Họ và tên | Email |
+|---|-----------|-------|
+| 1 | Lưu Thanh Mỹ (Trưởng nhóm) | data97688@gmail.com |
+| 2 | Lưu Văn Việt Đức | luuvanvietduc@gmail.com |
+| 3 | Nguyễn Công Tĩnh | tinh22102004@gmail.com |
+| 4 | Vũ Trí Dũng | dungvutri25@gmail.com |
+| 5 | Phạm Quang Trường | truongpham090325@gmail.com |
+| 6 | Khổng Tiến Dương | khongtienduongcv@gmail.com |
+
 Hãy sử dụng **4 Lenses** dưới đây để quét qua hoạt động vận hành của các công ty thành viên Vingroup. Ghi lại **ít nhất 5 bài toán/bottleneck** thực tế.
 
 ### 4 Lenses tìm bài toán AI cho Vingroup:

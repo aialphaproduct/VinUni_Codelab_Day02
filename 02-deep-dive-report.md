@@ -1,5 +1,16 @@
 # 🏗️ Phase 3 — DEEP-DIVE (Nhóm, 85 min)
 
+**Tên nhóm:** Simple-Tech
+**Thành viên nhóm:**
+| # | Họ và tên | Email |
+|---|-----------|-------|
+| 1 | Lưu Thanh Mỹ (Trưởng nhóm) | data97688@gmail.com |
+| 2 | Lưu Văn Việt Đức | luuvanvietduc@gmail.com |
+| 3 | Nguyễn Công Tĩnh | tinh22102004@gmail.com |
+| 4 | Vũ Trí Dũng | dungvutri25@gmail.com |
+| 5 | Phạm Quang Trường | truongpham090325@gmail.com |
+| 6 | Khổng Tiến Dương | khongtienduongcv@gmail.com |
+
 > **Bài toán được chọn:** Xanh SM (GSM) — Phân tích lý do hủy chuyến từ ghi âm cuộc gọi + ghi chú tài xế để tìm pattern lỗi hệ thống.
 
 ---
