@@ -55,24 +55,26 @@ Mỗi thành viên tự scan và chọn một đề tài trên branch cá nhân;
 │ Ai đang đau (Actor)? Cố vấn dịch vụ; khách hàng phải trả    │
 │ lời nhiều lượt.                                             │
 │                                                             │
-│ Workflow hiện tại (cần xác minh):                           │
+│ Workflow thủ công hiện tại (5 bước, cần xác minh):          │
 │   1. Khách gửi mô tả ──> 2. Cố vấn đọc, kiểm tra ──>        │
 │   3. Xác định thông tin thiếu ──> 4. Hỏi khách, ghi nhận ──>│
 │   5. Hoàn thiện phiếu tiếp nhận                             │
 │                                                             │
-│ Bước nào tốn thời gian/lỗi nhất? Bước 3–4 (chưa đo)         │
+│ Bước nào tốn thời gian/lỗi nhất? Bước 3–4 (⏱ ~4–7 phút/lượt,│
+│ ước lượng, chưa đo)                                         │
 │ AI hỗ trợ ở bước nào? Đối chiếu mô tả với checklist, liệt kê│
 │ mục thiếu và đề xuất câu hỏi, không hỏi lại điều đã có.     │
 │                                                             │
 │ Metric: trên ≥ 20 ca giả lập, phát hiện đúng ≥ 90% mục thiếu│
 │ (đã đo GPT-4o-mini: 65%; lớp Rule bắt thêm 15/21 lỗi).      │
 │                                                             │
-│ Quick Architecture: [x] Rule + LLM + Human Review            │
+│ Quick Architecture: [ ] No AI  [x] Rule  [x] LLM  [ ] Agent │
+│ (Rule + LLM, cố vấn duyệt mọi bản nháp — HITL)              │
 │ Boundary: không tự điền, không chẩn đoán nguyên nhân hỏng.  │
 └─────────────────────────────────────────────────────────────┘
 ```
 
-### Quick Problem Card #2 — Xanh SM: Ca tài xế báo pin nguy cấp *(đề xuất: Lưu Thanh Mỹ — thử nghiệm ở [phụ lục](02-deep-dive-report.md))*
+### Quick Problem Card #2 — Xanh SM: Ca tài xế báo pin nguy cấp *(đề xuất: Lưu Thanh Mỹ — thử nghiệm ở [02-deep-dive-report.md](02-deep-dive-report.md))*
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -103,7 +105,8 @@ Mỗi thành viên tự scan và chọn một đề tài trên branch cá nhân;
 │ • 100% tin có [DRAFT_ONLY], 0 lần lộ prompt — đạt           │
 │ • Thời gian ca leo thang ~10 → dưới 3 phút (mục tiêu)       │
 │                                                             │
-│ Quick Architecture: [x] Rule + LLM (hybrid) + HITL           │
+│ Quick Architecture: [ ] No AI  [x] Rule  [x] LLM  [ ] Agent │
+│ (hybrid: code quyết ngưỡng pin, LLM soạn tin — HITL)        │
 │ Boundary: không gửi tin khi chưa duyệt; pin < 5% không chỉ  │
 │ đường tới trạm; lời tài xế không thay đổi được quy tắc.     │
 └─────────────────────────────────────────────────────────────┘
@@ -130,7 +133,7 @@ Mỗi thành viên tự scan và chọn một đề tài trên branch cá nhân;
 │   ban, kể lại từ đầu ──> 5. Liên hệ lại để hỏi tiến độ      │
 │                                                             │
 │ Bước nào tốn thời gian/lỗi nhất? Bước 2–4: xác định đầu mối,│
-│ phân loại và chuyển tiếp yêu cầu.                           │
+│ phân loại, chuyển tiếp (⏱ chưa đo phút/lượt).               │
 │ AI hỗ trợ ở bước nào? Tiếp nhận qua một đầu mối, phân loại, │
 │ đề xuất phòng ban phụ trách, lưu lịch sử trao đổi.          │
 │                                                             │
@@ -138,9 +141,9 @@ Mỗi thành viên tự scan và chọn một đề tài trên branch cá nhân;
 │ thử; giảm ≥ 50% số lần phải cung cấp lại thông tin; 100%    │
 │ yêu cầu có mã tiếp nhận và trạng thái theo dõi.             │
 │                                                             │
-│ Quick Architecture: [x] LLM (+ HITL cho quyết định quan     │
-│ trọng). Boundary: không phê duyệt pháp lý, không quyết định │
-│ phí dịch vụ, không cam kết quyền lợi.                       │
+│ Quick Architecture: [ ] No AI  [ ] Rule  [x] LLM  [ ] Agent │
+│ (+ HITL cho quyết định quan trọng). Boundary: không phê     │
+│ duyệt pháp lý, không quyết định phí, không cam kết quyền lợi│
 └─────────────────────────────────────────────────────────────┘
 ```
 
