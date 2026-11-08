@@ -7,7 +7,7 @@
 | 1 | Lưu Thanh Mỹ (Trưởng nhóm) | data97688@gmail.com |
 | 2 | Lưu Văn Việt Đức | luuvanvietduc@gmail.com |
 | 3 | Nguyễn Công Tĩnh | tinh22102004@gmail.com |
-| 4 | Vũ Trí Dũng | **Vinmec** | Tốn thời gian | Kiểm tra quyền lợi bảo hiểm (BHYT / bảo hiểm thương mại) và rà soát hồ sơ bảo lãnh viện phí trước khi thanh toán; hồ sơ thiếu giấy tờ khiến yêu cầu bảo lãnh bị trả về, bệnh nhân phải chờ. Deep-dive cá nhân: *Vinmec Prior-Auth & Eligibility Co-Pilot*. |
+| 4 | Vũ Trí Dũng | dungvutri25@gmail.com |
 | 5 | Phạm Quang Trường | truongpham090325@gmail.com |
 | 6 | Khổng Tiến Dương | khongtienduongcv@gmail.com |
 
@@ -31,7 +31,7 @@ Mỗi thành viên tự scan và chọn một đề tài trên branch cá nhân;
 | 1 | Lưu Thanh Mỹ | **Xanh SM (GSM)** | Pain từ người khác | Tài xế **tự tra trạm sạc trên app** và tự đi sạc, nhưng app không cho biết xe có chạy tới nơi nổi không khi pin rất thấp. Khi pin nguy cấp, tài xế phải gọi tổng đài; điều phối viên **tự quyết cho tài xế tự chạy tới trạm hay điều xe sạc di động** và soạn phản hồi trong lúc bị hối thúc — quyết định sai thì xe cạn pin giữa đường hoặc tốn chi phí điều xe. |
 | 2 | Lưu Văn Việt Đức | **VinFast — Dịch vụ hậu mãi** | Pain từ người khác | Khách mô tả hiện tượng của xe ngắn và thiếu thông tin (*"điều hòa không mát"*); cố vấn dịch vụ phải tự phát hiện mục còn thiếu (thời điểm, tần suất, điều kiện) và hỏi lại trước khi lập phiếu tiếp nhận. |
 | 3 | Nguyễn Công Tĩnh | **Vinhomes – Vinpearl** | Pain từ người khác | Cư dân và chủ sở hữu BĐS nghỉ dưỡng phải liên hệ nhiều đầu mối (phí dịch vụ, pháp lý, vận hành, nghỉ dưỡng) mà không có một đầu mối chung; yêu cầu bị chuyển qua lại và phải trình bày lại nhiều lần. |
-| 4 | Vũ Trí Dũng | **Vinmec** | Tốn thời gian | Kiểm tra, đối chiếu hồ sơ bảo hiểm y tế và xử lý yêu cầu bổ sung giấy tờ trước khi thanh toán; đối soát viện phí, mã dịch vụ và hóa đơn với hồ sơ điều trị. |
+| 4 | Vũ Trí Dũng | **Vinmec** | Tốn thời gian | Kiểm tra quyền lợi bảo hiểm (BHYT / bảo hiểm thương mại) và rà soát hồ sơ bảo lãnh viện phí trước khi thanh toán; hồ sơ thiếu giấy tờ khiến yêu cầu bảo lãnh bị trả về, bệnh nhân phải chờ. Deep-dive cá nhân: *Vinmec Prior-Auth & Eligibility Co-Pilot*. |
 | 5 | Phạm Quang Trường | **Xanh SM (GSM)** | Tốn thời gian | Điều phối viên phải nghe lại ghi âm cuộc gọi hủy chuyến và đọc ghi chú tài xế để tổng hợp nguyên nhân hủy chuyến phổ biến, tìm pattern lỗi hệ thống. |
 | 6 | Khổng Tiến Dương | **Vinhomes** | Lặp lại | Mỗi ngày ban quản lý nhận hàng trăm phản ánh cư dân qua App Vinhomes Resident (mất nước, hỏng đèn, thang máy, tiếng ồn…) và phải phân loại, điều hướng thủ công tới đúng bộ phận. |
 
