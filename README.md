@@ -11,6 +11,18 @@
 > | [phu-luc-vinfast/](phu-luc-vinfast/02-deep-dive-report.md) | Bản gốc của Lưu Văn Việt Đức, bộ dữ liệu 20 ca + đáp án, log Gemini và GPT-4o-mini |
 > | [phu-luc-xanhsm/](phu-luc-xanhsm/02-deep-dive-report.md) | Thử nghiệm Xanh SM (24 ca, 4 lượt đo) — bằng chứng cho bài học "quyết định tất định để code làm" |
 >
+> **Đối chiếu tiêu chí chấm (01-worksheet.md):**
+>
+> | Tiêu chí | Điểm | Nằm ở đâu |
+> |---|---:|---|
+> | G1. Workflow Mapping | 20 | [02 · mục 1](02-deep-dive-report.md#1-phase-31--current-state-workflow-mapping) + [04-workflow-diagram.png](04-workflow-diagram.png): các bước, handoff 🔄, thời gian, bottleneck 🔴 |
+> | G2. Problem Statement | 20 | [02 · mục 2](02-deep-dive-report.md#2-phase-32--problem-statement-6-field--metrics): 6 trường, metric có số, ranh giới |
+> | G3. AI Fit & Future Flow | 10 | [02 · mục 3](02-deep-dive-report.md#3-phase-33--future-state-flow--ai-fit): so sánh Rule/LLM/Agent có số liệu, 🔵 AI Step, 🟢 HITL, ↩️ Fallback |
+> | G4. Decision Quality | 10 | [02 · mục 5](02-deep-dive-report.md#5-phase-5--evaluate): checklist, NOT YET, lý giải bằng số đo |
+> | I1. Scan & Cards | 15 | [01-problem-scan.md](01-problem-scan.md) (bản nhóm) + bài cá nhân trên branch từng thành viên |
+> | I2. Prototyping | 10 | `starter-code/prompt_prototype.py` trên branch cá nhân; kết quả đo ở [02 · mục 4](02-deep-dive-report.md#4-phase-4--technical-prompt-prototype--kết-quả-đo) |
+> | I3. AI Log & Reflection | 15 | [03-ai-log.md](03-ai-log.md) (bản nhóm) + AI-log cá nhân trên branch từng thành viên |
+>
 > **Code `.py` (chấm cá nhân)** nằm trên branch riêng của từng thành viên, không merge vào `main` theo quy định bên dưới.
 
 ---

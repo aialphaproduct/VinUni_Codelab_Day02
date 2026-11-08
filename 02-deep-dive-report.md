@@ -68,7 +68,7 @@ Nhóm cũng đã thử nâng cấp đề tài Xanh SM (xử lý sự cố pin) b
 
 ---
 
-## 1. Phase 3.1 — Current-State Workflow
+## 1. Phase 3.1 — Current-State Workflow Mapping
 
 > Quy trình dưới đây là **mô hình giả định** dựa trên các bước công khai của ứng dụng và biểu mẫu đặt lịch VinFast [S1–S3]; chưa được VinFast xác nhận.
 
@@ -99,7 +99,7 @@ Nhóm cũng đã thử nâng cấp đề tài Xanh SM (xử lý sự cố pin) b
 - 🔄 **Handoff:** khách ↔ cố vấn (mỗi vòng hỏi đáp), cố vấn → kỹ thuật viên (bàn giao phiếu).
 - ⏱ Số phút là **ước lượng của nhóm, chưa bấm giờ thực tế**. Sơ đồ trực quan: [04-workflow-diagram.png](04-workflow-diagram.png).
 
-## 2. Phase 3.2 — Problem Statement (6 trường)
+## 2. Phase 3.2 — Problem Statement (6-field) & Metrics
 
 | Trường | Nội dung |
 |---|---|
@@ -121,9 +121,11 @@ Nhóm cũng đã thử nâng cấp đề tài Xanh SM (xử lý sự cố pin) b
 
 Trợ lý **không thay biểu mẫu**: phần có cấu trúc vẫn do biểu mẫu và Rule kiểm tra; LLM chỉ đảm nhận phần mà biểu mẫu không làm được — **đọc hiểu lời khách**.
 
-## 3. Phase 3.3 — AI Fit & Future-State Flow
+## 3. Phase 3.3 — Future-State Flow & AI Fit
 
 ### 3.1. Rule, LLM, Hybrid hay Agent?
+
+**AI-Fit Matrix:** [ ] Rule / State-Machine  [x] **LLM Feature** (kèm lớp Rule kiểm tra đầu vào/đầu ra và HITL)  [ ] Agentic Loop
 
 | Phương án | Làm tốt | Không làm được | Bằng chứng | Vai trò |
 |---|---|---|---|---|
@@ -137,32 +139,38 @@ Trợ lý **không thay biểu mẫu**: phần có cấu trúc vẫn do biểu m
 
 ### 3.2. Future-State Flow
 
+Ký hiệu theo worksheet: 🔵 **AI Step** · 🟢 **Human Step (HITL)** · ↩️ **Fallback** · ⚙️ bước kiểm tra bằng code (Rule).
+
 ```text
 Khách gửi biểu mẫu + mô tả
         │
         ▼
-🟩 RULE: kiểm tra trường bắt buộc, định dạng
+⚙️ RULE: kiểm tra trường bắt buộc, định dạng
         │
         ▼
-🟦 LLM: đánh dấu 4 mục (có / thiếu / không biết / không áp dụng / mâu thuẫn),
-        mỗi nhận định kèm trích dẫn nguyên văn; soạn câu hỏi nháp
+🔵 AI STEP: đánh dấu 4 mục (có / thiếu / không biết / không áp dụng / mâu thuẫn),
+           mỗi nhận định kèm trích dẫn nguyên văn; soạn câu hỏi nháp
         │
         ▼
-🟩 RULE kiểm tra đầu ra:
+⚙️ RULE kiểm tra đầu ra:
    • "không biết / không áp dụng" phải có trích dẫn
    • mục "thiếu / mâu thuẫn" phải có câu hỏi đi kèm
    • giá trị trên biểu mẫu khác lời khách → buộc gắn "mâu thuẫn"   (cần bổ sung)
    • JSON sai, thiếu cờ nháp → chặn ──────────────┐
         │                                         ▼
         ▼                                  ↩️ FALLBACK: cố vấn dùng checklist thủ công
-🟨 HITL: cố vấn đối chiếu trích dẫn, sửa,      (cả khi API lỗi hoặc chậm > 15 s)
-         duyệt câu hỏi rồi mới gửi khách
+🟢 HUMAN STEP (HITL): cố vấn đối chiếu        (cả khi API lỗi hoặc chậm > 15 s)
+   trích dẫn, sửa, duyệt câu hỏi rồi mới gửi khách
         │
         ▼
 Khách bổ sung → cố vấn xác nhận phiếu → bàn giao kỹ thuật viên
 ```
 
-## 4. Phase 4 — Prompt Prototype & kết quả đo
+- 🔵 **AI Step:** đọc hiểu mô tả, gắn trạng thái kèm trích dẫn, soạn câu hỏi nháp.
+- 🟢 **Human Step (HITL):** cố vấn duyệt mọi câu hỏi trước khi gửi; kỹ thuật viên chịu trách nhiệm chẩn đoán.
+- ↩️ **Fallback:** API lỗi, chậm quá 15 giây hoặc đầu ra bị Rule chặn → cố vấn dùng checklist thủ công như hiện tại.
+
+## 4. Phase 4 — Technical Prompt Prototype & kết quả đo
 
 ### 4.1. Bộ thử
 
@@ -210,21 +218,21 @@ Log: [Gemini](phu-luc-vinfast/results/vinfast_intake/) · [GPT-4o-mini 20 ca](ph
 
 **Ranh giới an toàn giữ vững:** cả 3 ca tấn công (ép thêm triệu chứng "mùi khét", ép kết luận "mô tơ hỏng", ép bỏ nhãn nháp và xác nhận lịch) đều chỉ được ghi nhận trong `notes` như **yêu cầu bị từ chối**, không đi vào phiếu.
 
-## 5. Phase 5 — Evaluate
+## 5. Phase 5 — EVALUATE
 
 ### 5.1. AI Readiness Checklist
 
-| Câu hỏi | Trạng thái | Căn cứ |
-|---|---|---|
-| Có dữ liệu mẫu và log để kiểm thử? | **Có một phần** | 20 ca giả lập có đáp án, log 2 model; chưa có hồ sơ tiếp nhận thật |
-| Rủi ro khi AI sai có trong tầm kiểm soát? | **Có, đã đo một phần** | Cố vấn duyệt mọi bản nháp; lớp Rule bắt 15/21 lỗi; fallback checklist |
-| Stakeholder sẵn sàng thay đổi quy trình? | **Chưa xác nhận** | Chưa phỏng vấn cố vấn dịch vụ VinFast |
+1. [ ] Chúng tôi có sẵn dữ liệu mẫu/logs sạch để test? — **Có một phần:** 20 ca giả lập có đáp án, log của 2 model; chưa có hồ sơ tiếp nhận thật của VinFast.
+2. [x] Rủi ro khi AI sai có nằm trong tầm kiểm soát (qua HITL hoặc Fallback)? — **Có:** cố vấn duyệt mọi bản nháp, lớp Rule bắt 15/21 lỗi, fallback về checklist thủ công.
+3. [ ] Stakeholders sẵn sàng thay đổi quy trình làm việc cũ? — **Chưa xác nhận:** chưa phỏng vấn cố vấn dịch vụ VinFast.
 
-### 5.2. Quyết định: NOT YET — kèm lộ trình 3 bước tới GO
+### 5.2. Quyết định cuối cùng của Ban Giám Đốc Vin Smart Future: NOT YET — kèm lộ trình 3 bước tới GO
 
-- [ ] GO
-- [x] **NOT YET**
-- [ ] NO-GO
+- [ ] **GO (Bắt đầu xây dựng Prototype):** Bắt đầu phát triển với scope hẹp.
+- [x] **NOT YET (Cần tích lũy thêm dữ liệu/xác lập baseline):** Trì hoãn để chuẩn bị thêm.
+- [ ] **NO-GO (Không khả thi / Rule-based tốt hơn):** Hủy bỏ dự án AI này.
+
+**Justification (Lý giải quyết định dựa trên bằng chứng kỹ thuật và chi phí):**
 
 Nhóm chọn **chưa triển khai**, vì lý do đo được chứ không phải cảm tính: recall phát hiện mục thiếu mới đạt **65%**, thấp hơn mục tiêu **90%**, và còn **3 lỗi mâu thuẫn** lọt qua mọi lớp kiểm tra. Nhưng NOT YET ở đây không phải "dừng lại" — các lỗi đã được phân loại đủ rõ để biết chính xác cần làm gì:
 
