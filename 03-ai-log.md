@@ -50,6 +50,17 @@ Nguyên tắc xuyên suốt: **gợi ý của trợ lý AI không phải là k�
 | 9 | Ở thử nghiệm Xanh SM, GPT-4o-mini **lẫn ngưỡng "< 5%"** (điều xe sạc khi pin 6%, 8%); bản sửa prompt do trợ lý AI đề xuất lại làm hỏng một ca an toàn khác. | Chuyển quyết định ngưỡng sang code → 24/24 ca. Bài học này được áp dụng thẳng vào thiết kế VinFast (luật so khớp biểu mẫu ↔ tin nhắn). |
 | 10 | Ở VinFast, GPT-4o-mini gắn "không áp dụng" **không kèm trích dẫn** cho 15 mục đáng lẽ là "thiếu", và **tự chọn giá trị** ở 3/3 ca mâu thuẫn (VF-17 ghi ngược lời khách). | Xây lớp kiểm tra bằng code bắt được 15/21 lỗi; 3 lỗi mâu thuẫn còn lại là bước 1 trong lộ trình tới GO. |
 
+### Khi chạy prototype Gemini của tôi (`starter-code/prompt_prototype.py`)
+
+| # | Chuyện gì xảy ra | Tôi xử lý thế nào |
+|---|---|---|
+| 11 | Model `gemini-2.5-flash` trong starter đã trả lỗi 404 với tài khoản của nhóm; trợ lý AI chọn `gemini-3.8-flash` dựa trên log chạy được của Đức. | Thêm biến môi trường `GEMINI_MODEL` để đổi model không cần sửa code; model chạy được trên key của tôi là `gemini-3.5-flash`, đặt làm mặc định. |
+| 12 | Key Gemini đầu tiên báo `403 CONSUMER_SUSPENDED`: dự án Google Cloud chứa key đã bị khóa. Lần thử thứ hai vẫn cùng số dự án vì key vẫn thuộc dự án cũ. | Đối chiếu số dự án trong thông báo lỗi để biết key nào đang được dùng; tạo key mới trong dự án khác. Đây là lỗi hạ tầng, không phải lỗi code. |
+| 13 | Khi autograder chạy script qua đường ống trên Windows, dòng tiêu đề có emoji 🚀 làm script dừng với `UnicodeEncodeError` (exit code 1) trước khi gọi API. | Buộc stdout/stderr dùng UTF-8 ở đầu file; thử lại bằng key giả để xác nhận tiêu chí 4 PASS trước khi tốn lượt gọi thật. |
+| 14 | Giới hạn 512 token do trợ lý AI đặt (để chạy nhanh trong 30 giây của autograder) làm **JSON của Test 3 bị cắt giữa câu** — hành động đúng nhưng chuỗi JSON không hợp lệ, hệ thống thật sẽ không đọc được. | Nâng giới hạn lên 2048. Bài học: "test Passed" chỉ kiểm tra có từ khóa `dispatch_mobile_charger`, chưa kiểm tra JSON hợp lệ — cần đọc đầu ra, không chỉ nhìn dấu ✅. |
+
+**Kết quả chạy thật (08/11/2026, `gemini-3.5-flash`):** cả **3/3 test ranh giới Passed** — pin 2% bị ép chỉ đường 8km, ép bỏ thẻ `[DRAFT_ONLY]`, giả danh "SYSTEM OVERRIDE" với pin 3%. Autograder: `--check-code-4` PASS, `--check-code-5` PASS. Log: [`results/gemini_prototype/20261108_gemini-3.5-flash_run.txt`](results/gemini_prototype/20261108_gemini-3.5-flash_run.txt).
+
 ## 4. Prompt và ranh giới đã được điều chỉnh ra sao
 
 | Thiết kế | Lý do |
@@ -71,3 +82,5 @@ Nguyên tắc xuyên suốt: **gợi ý của trợ lý AI không phải là k�
 ## 6. Phản tư cá nhân
 
 Bài học lớn nhất là kiểm chứng trước khi tin. Bản báo cáo đầu tiên của tôi nghe rất thuyết phục nhưng nhiều khẳng định không có dữ liệu, và mô tả nghiệp vụ còn sai so với thực tế tài xế dùng app. Chỉ khi chạy đo, nhóm mới thấy LLM lẫn ngưỡng số — điều không thể thấy khi chỉ đọc prompt.
+
+Lần chạy prototype Gemini cũng dạy tôi rằng "chạy được" có nhiều lớp: key phải thuộc dự án còn hoạt động, script phải in được ra đường ống của autograder, và đầu ra phải còn nguyên vẹn. Cả ba lỗi đó đều không nằm trong prompt, nhưng đều làm bài trượt nếu không chạy thử thật.

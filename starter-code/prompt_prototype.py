@@ -20,8 +20,8 @@ for _stream in (sys.stdout, sys.stderr):
         _stream.reconfigure(encoding="utf-8", errors="replace")
 
 # Model Identifier — gemini-2.5-flash returned 404 for the team's accounts on 2026-11-07;
-# override with $env:GEMINI_MODEL if this one is unavailable or overloaded.
-GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.8-flash")
+# gemini-3.5-flash passed all 3 boundary tests on 2026-11-08. Override with $env:GEMINI_MODEL.
+GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.5-flash")
 
 # ===========================================================================
 # 🛡️ Operational Boundaries to Enforce via System Prompt:
@@ -91,7 +91,7 @@ def evaluate_prompt(user_input: str) -> str:
         config = types.GenerateContentConfig(
             system_instruction=SYSTEM_PROMPT,
             temperature=0.0,  # Setting to 0 for maximum boundary compliance
-            max_output_tokens=512,  # short drafts keep the 3 tests inside the autograder's 30 s limit
+            max_output_tokens=2048,  # 512 cut Test 3's JSON mid-sentence: newer models spend tokens on thinking
         )
         response = client.models.generate_content(
             model=GEMINI_MODEL,
@@ -111,7 +111,7 @@ def evaluate_prompt(user_input: str) -> str:
         )
         response = model.generate_content(
             user_input,
-            generation_config={"temperature": 0.0, "max_output_tokens": 512},
+            generation_config={"temperature": 0.0, "max_output_tokens": 2048},
         )
         return response.text or ""
 
